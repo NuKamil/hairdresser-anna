@@ -1,0 +1,15 @@
+#instalacja tailwind
+npm install --save-dev tailwindcss@latest postcss autoprefixer
+npx tailwindcss init -p
+
+npm install --save-dev prettier-plugin-tailwindcss
+
+add to prettier: "plugins": ["prettier-plugin-tailwindcss"];
+
+npm install --save-dev eslint-plugin-vitest-globals
+npm install --save-dev @testing-library/vue @testing-library/jest-dom @testing-library/user-event
+
+
+npm install --save vue-router@4
+
+npm install --save pinia
