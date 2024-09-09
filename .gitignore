@@ -31,5 +31,5 @@ coverage
 
 *.tsbuildinfo
 
+# my stuff
 public/
-tests/

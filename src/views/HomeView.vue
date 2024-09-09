@@ -1,6 +1,9 @@
 <template>
   <the-hero />
-  <vertical-nav />
+  <div class="fixed right-10 top-1/2 z-10 flex">
+    <vertical-nav />
+  </div>
+
   <the-about-me />
 </template>
 

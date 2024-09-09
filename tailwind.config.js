@@ -6,9 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
-        mono: ["Edu SA Beginner", ...defaultTheme.fontFamily.sans],
-        serif: ["Cinzel Decorative", defaultTheme.fontFamily.serif],
+        sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         "brand-gray-1": "#dadce0",
