@@ -1,5 +1,8 @@
 <template>
-  <div id="about_me" class="flex h-screen justify-center font-sans">
+  <div
+    id="about_me"
+    class="flex h-screen min-h-screen shrink-0 snap-start justify-center font-sans"
+  >
     <!-- <img :src="urlHeaderPicture" alt="" class="midn-h-full absolute -z-10 w-auto" /> -->
     <section class="my-auto flex w-2/3 content-around">
       <div>

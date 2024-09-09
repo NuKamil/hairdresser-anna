@@ -1,6 +1,6 @@
 <template>
   <!-- <img class="relative top-0 h-7" :src="scissorsUrl" alt="" /> -->
-  <ul class="ml-2 w-max font-sans text-lg text-white">
+  <ul class="ml-2 w-max font-sans text-lg">
     <li class="button-effect cursor-pointer" v-for="item in menuItems" :key="item.hash">
       <a
         :href="item.hash"

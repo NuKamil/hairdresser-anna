@@ -1,18 +1,13 @@
 <template>
   <header
     id="main"
-    class="relative mb-12 flex h-screen items-center justify-center overflow-hidden"
+    class="mb-12 flex h-screen min-h-screen shrink-0 snap-start items-center justify-center"
   >
     <!-- <video autoplay loop muted class="absolute -z-10 min-h-full w-auto min-w-full max-w-none">
       <source :src="urlVideo" />
       Your browser does not support the video tag.
     </video> -->
-    <img
-      :src="urlHeaderPicture"
-      alt=""
-      class="midn-h-full absolute -z-10 w-auto min-w-full max-w-none"
-    />
-
+    <img :src="urlHeaderPicture" alt="" class="absolute -z-10 h-full w-full object-cover" />
     <the-visiting-card />
   </header>
 </template>
