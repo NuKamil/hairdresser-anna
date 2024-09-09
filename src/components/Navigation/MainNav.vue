@@ -1,8 +1,11 @@
 <template>
   <nav class="fixed left-0 top-0 z-10 flex h-16 w-full">
     <ul class="md:text xl mx-auto flex h-full items-center font-sans text-lg text-black">
-      <li class="button-effect ml-9 first:ml-0" v-for="menuItem in menuItems" :key="menuItem.text">
-        <router-link :to="menuItem.url">
+      <li class="ml-9 first:ml-0" v-for="menuItem in menuItems" :key="menuItem.text">
+        <router-link
+          :class="[isActiveLink(menuItem.url) ? 'text-kamil-orange-1' : 'button-effect']"
+          :to="menuItem.url"
+        >
           {{ menuItem.text }}
         </router-link>
       </li>
@@ -11,18 +14,21 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from "vue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 
-const route = useRoute();
-
 const menuItems = ref([
-  { text: "HOME", url: "/", route: "any", type: "route" },
-  { text: "NEWS", url: "/news", route: "any", type: "route" },
-  { text: "BOOK APPOINTMENT", url: "/book", route: "any", type: "route" },
-  { text: "SHOP", url: "/shop", route: "any", type: "route" },
+  { text: "HOME", url: "/" },
+  { text: "SHOP", url: "/shop" },
+  { text: "NEWS", url: "/news" },
+  { text: "BOOK APPOINTMENT", url: "/book" },
   // itd.
 ]);
+
+const isActiveLink = (routePath) => {
+  const route = useRoute();
+  return route.path === routePath;
+};
 </script>
 
 <style>

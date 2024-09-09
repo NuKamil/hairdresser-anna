@@ -15,7 +15,7 @@ module.exports = {
         "brand-blue-1": "#1967d2",
         "brand-blue-2": "#4285f4",
         "brand-green-1": "#137333",
-        "kamil-orange-1": "rgb(251 146 60)",
+        "kamil-orange-1": "rgb(253 186 116)",
       },
       boxShadow: {
         blue: "0 0 3px 3px #4285f4",

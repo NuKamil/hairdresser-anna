@@ -13,5 +13,3 @@ import TheHero from "@/components/Presentation/TheHero.vue";
 import VerticalNav from "@/components/Navigation/VerticalNav.vue";
 import TheAboutMe from "@/components/Presentation/TheAboutMe.vue";
 </script>
-
-<style></style>

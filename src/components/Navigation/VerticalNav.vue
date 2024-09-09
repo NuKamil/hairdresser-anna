@@ -1,11 +1,11 @@
 <template>
   <!-- <img class="relative top-0 h-7" :src="scissorsUrl" alt="" /> -->
   <ul class="ml-2 w-max font-sans text-lg">
-    <li class="button-effect cursor-pointer" v-for="item in menuItems" :key="item.hash">
+    <li class="cursor-pointer" v-for="item in menuItems" :key="item.hash">
       <a
         :href="item.hash"
         @click.prevent="scrollToSection(item)"
-        :class="{ 'kamil-orange-1': activeSection === item.hash }"
+        :class="[activeSection === item.hash ? 'text-kamil-orange-1' : 'button-effect']"
         >{{ item.text }}
       </a>
     </li>
@@ -35,22 +35,4 @@ const scrollToSection = (item) => {
     activeSection.value = item.hash;
   }
 };
-
-const handleScroll = () => {
-  for (const item of menuItems.value) {
-    const section = document.getElementById(item.hash);
-    if (section && section.getBoundingClientRect().top < window.innerHeight / 2) {
-      activeSection.value = item.hash;
-      break;
-    }
-  }
-};
-
-onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
 </script>
