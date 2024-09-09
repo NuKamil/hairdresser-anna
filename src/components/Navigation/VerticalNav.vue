@@ -1,19 +1,3 @@
-<template>
-  <div class="fixed left-5 top-1/2 z-10 flex">
-    <!-- <img class="relative top-0 h-7" :src="scissorsUrl" alt="" /> -->
-    <ul class="ml-2 w-max font-serif text-lg font-bold text-white">
-      <li class="button-effect cursor-pointer" v-for="item in menuItems" :key="item.hash">
-        <a
-          :href="item.hash"
-          @click.prevent="scrollToSection(item)"
-          :class="{ 'kamil-orange-1': activeSection === item.hash }"
-          >{{ item.text }}
-        </a>
-      </li>
-    </ul>
-  </div>
-</template>
-
 <script setup>
 import { ref } from "vue";
 import { onMounted, onUnmounted } from "vue";
@@ -56,3 +40,19 @@ onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
 </script>
+
+<template>
+  <div class="fixed left-5 top-1/2 z-10 flex">
+    <!-- <img class="relative top-0 h-7" :src="scissorsUrl" alt="" /> -->
+    <ul class="ml-2 w-max font-serif text-lg font-bold text-white">
+      <li class="button-effect cursor-pointer" v-for="item in menuItems" :key="item.hash">
+        <a
+          :href="item.hash"
+          @click.prevent="scrollToSection(item)"
+          :class="{ 'kamil-orange-1': activeSection === item.hash }"
+          >{{ item.text }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</template>

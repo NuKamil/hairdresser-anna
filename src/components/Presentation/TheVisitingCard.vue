@@ -1,3 +1,7 @@
+<script setup>
+const scissorsUrl = "./Svg/scissors.svg";
+</script>
+
 <template>
   <section
     id="section_02"
@@ -20,6 +24,3 @@
     </div>
   </section>
 </template>
-<script setup>
-const scissorsUrl = "./Svg/scissors.svg";
-</script>

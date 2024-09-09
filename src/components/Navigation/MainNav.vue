@@ -1,15 +1,3 @@
-<template>
-  <nav class="fixed left-0 top-0 z-10 flex h-16 w-full bg-gradient-to-b from-black to-transparent">
-    <ul class="md:text xl mx-auto flex h-full items-center font-serif text-lg font-bold text-white">
-      <li class="button-effect ml-9 first:ml-0" v-for="menuItem in menuItems" :key="menuItem.text">
-        <router-link :to="menuItem.url">
-          {{ menuItem.text }}
-        </router-link>
-      </li>
-    </ul>
-  </nav>
-</template>
-
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { useRoute } from "vue-router";
@@ -43,3 +31,15 @@ const menuItems = ref([
   color: transparent;
 }
 </style>
+
+<template>
+  <nav class="fixed left-0 top-0 z-10 flex h-16 w-full bg-gradient-to-b from-black to-transparent">
+    <ul class="md:text xl mx-auto flex h-full items-center font-serif text-lg font-bold text-white">
+      <li class="button-effect ml-9 first:ml-0" v-for="menuItem in menuItems" :key="menuItem.text">
+        <router-link :to="menuItem.url">
+          {{ menuItem.text }}
+        </router-link>
+      </li>
+    </ul>
+  </nav>
+</template>

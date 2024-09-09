@@ -1,3 +1,15 @@
+<script setup>
+import TheVisitingCard from "@/components/Presentation/TheVisitingCard.vue";
+const urlVideo = "/Video/pexels-arthouse-studio-7686503 (Original).mp4";
+const urlHeaderPicture = "/Pictures/beauty-salon-4043096_1920.jpg";
+</script>
+
+<style>
+video {
+  filter: brightness(50%);
+}
+</style>
+
 <template>
   <header
     id="main"
@@ -12,15 +24,3 @@
     <the-visiting-card />
   </header>
 </template>
-
-<script setup>
-import TheVisitingCard from "@/components/Presentation/TheVisitingCard.vue";
-const urlVideo = "/Video/pexels-arthouse-studio-7686503 (Original).mp4";
-const urlHeaderPicture = "/Pictures/beauty-salon-4043096_1920.jpg";
-</script>
-
-<style>
-video {
-  filter: brightness(50%);
-}
-</style>

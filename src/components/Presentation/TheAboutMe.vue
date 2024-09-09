@@ -1,7 +1,7 @@
 <template>
-  <div id="about_me" class="flex h-screen justify-center font-serif">
+  <div id="about_me" class="flex h-screen font-serif">
     <!-- <img :src="urlHeaderPicture" alt="" class="midn-h-full absolute -z-10 w-auto" /> -->
-    <section class="flex w-2/3 content-around">
+    <section class="mx-40 my-auto flex content-around justify-center">
       <div>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab exercitationem, libero cumque
         unde cum nisi? Corporis assumenda sunt harum!
