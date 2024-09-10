@@ -1,6 +1,6 @@
 <template>
   <div class="no-scrollbar relative h-screen snap-y snap-mandatory overflow-y-scroll">
-    <div class="fixed right-10 top-1/2 z-10 flex">
+    <div class="fixed right-10 top-1/2">
       <vertical-nav />
     </div>
     <the-hero />

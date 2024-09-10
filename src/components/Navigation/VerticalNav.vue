@@ -1,13 +1,17 @@
 <template>
-  <!-- <img class="relative top-0 h-7" :src="scissorsUrl" alt="" /> -->
-  <ul class="ml-2 w-max font-sans text-lg">
-    <li class="cursor-pointer" v-for="item in menuItems" :key="item.hash">
-      <a
-        :href="item.hash"
-        @click.prevent="scrollToSection(item)"
-        :class="[activeSection === item.hash ? 'text-kamil-orange-dark' : 'button-effect']"
-        >{{ item.text }}
-      </a>
+  <ul class="ml-2 hidden w-max flex-col font-sans text-lg md:flex">
+    <li class="mb-5 rotate-45 cursor-pointer" v-for="item in menuItems" :key="item.hash">
+      <a :href="item.hash" @click.prevent="scrollToSection(item)"
+        ><div
+          :class="[
+            'h-3',
+            'w-3',
+            activeSection === item.hash ? 'bg-kamil-orange-dark' : 'bg-kamil-blue-dark',
+            'transition-colors duration-300 hover:bg-kamil-orange-dark',
+            'transition-transform duration-300 hover:rounded-full',
+          ]"
+        ></div
+      ></a>
     </li>
   </ul>
 </template>

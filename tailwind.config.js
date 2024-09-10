@@ -16,7 +16,7 @@ module.exports = {
         "kamil-orange-dark": "#E8B86D", //rgb(232, 184, 109)
       },
       boxShadow: {
-        blue: "0 0 3px 3px #4285f4",
+        blue: "0 0 3px 3px #808D7C",
         gray: "0 1px 3px 0 rgba(60, 64, 67, .3)",
       },
     },

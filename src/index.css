@@ -14,3 +14,20 @@ body {
 .no-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, and Opera */
 }
+
+.select-effect {
+  background-image: linear-gradient(to right, rgb(232, 184, 109) 50%, rgb(95, 111, 101) 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  color: rgb(95, 111, 101);
+  transition:
+    background-position 0.2s ease-out,
+    color 0.5s ease;
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.select-effect:hover {
+  background-position: left bottom;
+  color: transparent;
+}

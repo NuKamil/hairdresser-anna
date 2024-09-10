@@ -4,6 +4,7 @@ import HomeView from "@/views/HomeView.vue";
 import BookAppointment from "@/views/BookAppointment.vue";
 import TheShop from "@/views/TheShop.vue";
 import TheNews from "@/views/News.vue";
+import LoginPage from "@/views/LoginPage.vue";
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: "/news",
     name: "News",
     component: TheNews,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: LoginPage,
   },
 ];
 
