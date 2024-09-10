@@ -7,7 +7,7 @@
       <source :src="urlVideo" />
       Your browser does not support the video tag.
     </video> -->
-    <img :src="urlHeaderPicture" alt="" class="absolute -z-10 h-full w-full object-cover" />
+    <!-- <img :src="urlHeaderPicture" alt="" class="absolute -z-10 h-full w-full object-cover" /> -->
     <the-visiting-card />
   </header>
 </template>

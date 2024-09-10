@@ -5,7 +5,7 @@
       <a
         :href="item.hash"
         @click.prevent="scrollToSection(item)"
-        :class="[activeSection === item.hash ? 'text-kamil-orange-1' : 'button-effect']"
+        :class="[activeSection === item.hash ? 'text-kamil-orange-dark' : 'button-effect']"
         >{{ item.text }}
       </a>
     </li>
@@ -35,4 +35,32 @@ const scrollToSection = (item) => {
     activeSection.value = item.hash;
   }
 };
+let observer;
+
+const onIntersect = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      activeSection.value = entry.target.id;
+    }
+  });
+};
+
+onMounted(() => {
+  observer = new IntersectionObserver(onIntersect, {
+    threshold: 0.6, // 60% elementu musi być widoczne, aby uznać go za "intersecting"
+  });
+
+  menuItems.value.forEach((item) => {
+    const section = document.getElementById(item.hash);
+    if (section) {
+      observer.observe(section);
+    }
+  });
+});
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
+  }
+});
 </script>

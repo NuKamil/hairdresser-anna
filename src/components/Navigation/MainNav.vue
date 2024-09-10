@@ -1,6 +1,8 @@
 <template>
   <nav class="fixed left-0 top-0 z-10 flex h-16 w-full">
-    <ul class="md:text xl mx-auto flex h-full items-center font-sans text-lg text-black">
+    <ul
+      class="md:text xl text-kamil-orange-dark mx-auto flex h-full items-center font-sans text-lg"
+    >
       <li class="ml-9 first:ml-0" v-for="menuItem in menuItems" :key="menuItem.text">
         <router-link
           :class="[isActiveLink(menuItem.url) ? 'text-kamil-orange-1' : 'button-effect']"
@@ -33,10 +35,10 @@ const isActiveLink = (routePath) => {
 
 <style>
 .button-effect {
-  background-image: linear-gradient(to right, rgb(253 186 116) 50%, black 50%);
+  background-image: linear-gradient(to right, rgb(232, 184, 109) 50%, rgb(95, 111, 101) 50%);
   background-size: 200% 100%;
   background-position: right bottom;
-  color: black;
+  color: rgb(95, 111, 101);
   transition:
     background-position 0.2s ease-out,
     color 0.5s ease;
