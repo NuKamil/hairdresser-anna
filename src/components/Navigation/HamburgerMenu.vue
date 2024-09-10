@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Ikona hamburgera widoczna na małych ekranach -->
-    <button @click="toggleMenu" class="md:hidden">
+    <button @click="toggleMenu" class="text-kamil-orange-dark md:hidden">
       <svg
         class="h-8 w-8"
         fill="none"
@@ -23,7 +23,7 @@
       <ul class="flex flex-col items-center space-y-4 py-4">
         <!-- Slot dla elementów menu -->
         <slot
-          class="w-full border-b border-solid border-kamil-green-light"
+          class="border-kamil-green-light w-full border-b border-solid"
           name="menu-items"
         ></slot>
         <!-- Slot dla dodatkowych przycisków (np. Sign In) -->

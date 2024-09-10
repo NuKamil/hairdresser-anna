@@ -23,7 +23,7 @@
 
         <!-- Przyciski widoczne na większych ekranach -->
         <div class="ml-auto mr-5 hidden h-full items-center md:flex">
-          <action-button />
+          <action-button v-if="isLogged" />
         </div>
 
         <!-- Hamburger menu, widoczne na małych ekranach -->
@@ -49,11 +49,13 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import ActionButton from "@/components/ActionButton.vue";
 import HamburgerMenu from "@/components/Navigation/HamburgerMenu.vue"; // Import komponentu
+
+const isLogged = ref(false);
 
 const menuItems = ref([
   { text: "HOME", url: "/" },

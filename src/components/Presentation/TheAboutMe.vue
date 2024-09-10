@@ -10,7 +10,7 @@
         <li
           v-for="(item, index) in pictures"
           :key="index"
-          class="h-80 w-full flex-shrink-0 snap-center md:h-72 md:w-96 lg:h-auto lg:w-auto"
+          class="h-64 w-full flex-shrink-0 snap-center md:h-72 md:w-96 lg:h-auto lg:w-auto"
         >
           <img
             :src="Object.values(item)[0]"
@@ -20,7 +20,7 @@
         </li>
       </ul>
       <!-- <img :src="urlHeaderPicture" alt="" class="midn-h-full absolute -z-10 w-auto" /> -->
-      <section class="flex font-sans text-kamil-blue-dark">
+      <section class="text-kamil-blue-dark flex font-sans">
         <div>
           For 17 år siden kom en ung jente fra Polen til Norge med en stor drøm. Hun hadde nylig
           fullført sin utdanning som frisør i hjemlandet, og med en lidenskap for faget bestemte hun
