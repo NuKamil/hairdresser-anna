@@ -1,45 +1,85 @@
 <template>
-  <nav class="fixed left-0 top-0 z-10 flex h-16 w-full bg-gradient-to-b from-black to-transparent">
-    <ul class="md:text xl mx-auto flex h-full items-center font-serif text-lg font-bold text-white">
-      <li class="button-effect ml-9 first:ml-0" v-for="menuItem in menuItems" :key="menuItem.text">
-        <router-link :to="menuItem.url">
-          {{ menuItem.text }}
-        </router-link>
-      </li>
-    </ul>
-  </nav>
+  <header class="w-full text-lg font-semibold">
+    <div class="fixed left-0 top-0 h-16 w-full">
+      <div class="mx-auto flex h-full w-full">
+        <!-- Navbar widoczny tylko na większych ekranach -->
+        <nav class="absolute left-1/2 top-0 hidden h-full -translate-x-1/2 transform md:flex">
+          <ul class="flex h-full list-none justify-center font-sans text-kamil-orange-dark">
+            <li class="ml-9 h-full first:ml-0" v-for="menuItem in menuItems" :key="menuItem.text">
+              <router-link
+                :class="[
+                  'flex',
+                  'h-full',
+                  'items-center',
+                  isActiveLink(menuItem.url) ? 'text-kamil-orange-dark' : 'select-effect',
+                ]"
+                :to="menuItem.url"
+              >
+                {{ menuItem.text }}
+              </router-link>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Przyciski widoczne na większych ekranach -->
+        <div class="ml-auto mr-5 hidden h-full items-center md:flex">
+          <action-button @click="login" isLogged="isLogged" v-if="isLogged" />
+          <profile-image v-else />
+        </div>
+
+        <!-- Hamburger menu, widoczne na małych ekranach -->
+        <HamburgerMenu>
+          <!-- Przekazanie slotów do HamburgerMenu -->
+          <template #menu-items>
+            <li v-for="menuItem in menuItems" :key="menuItem.url">
+              <router-link
+                :class="[isActiveLink(menuItem.url) ? 'text-kamil-orange-dark' : 'text-black']"
+                :to="menuItem.url"
+              >
+                {{ menuItem.text }}
+              </router-link>
+            </li>
+          </template>
+
+          <template #extra-button>
+            <action-button @click="login" />
+          </template>
+        </HamburgerMenu>
+      </div>
+    </div>
+  </header>
 </template>
 
-<script setup>
-import { ref, onMounted, onUnmounted, computed } from "vue";
+<script setup lang="ts">
+import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
+import ActionButton from "@/components/ActionButton.vue";
+import HamburgerMenu from "@/components/Navigation/HamburgerMenu.vue"; // Import komponentu
+import ProfileImage from "@/components/ProfileImage.vue";
 
-const route = useRoute();
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const isLogged = ref(true);
 
 const menuItems = ref([
-  { text: "Home", url: "/", route: "any", type: "route" },
-  { text: "News", url: "/news", route: "any", type: "route" },
-  { text: "Book Appointment", url: "/book", route: "any", type: "route" },
-  { text: "Shop", url: "/shop", route: "any", type: "route" },
-  // itd.
+  { text: "HOME", url: "/" },
+  { text: "SHOP", url: "/shop" },
+  { text: "NEWS", url: "/news" },
+  { text: "BOOK NOW", url: "/book" },
 ]);
+
+const isActiveLink = (routePath) => {
+  const route = useRoute();
+  return route.path === routePath;
+};
+
+const login = () => {
+  router.push({
+    name: "Login",
+  });
+};
 </script>
 
-<style>
-.button-effect {
-  background-image: linear-gradient(to right, rgb(253 186 116) 50%, white 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  color: black;
-  transition:
-    background-position 0.2s ease-out,
-    color 0.5s ease;
-  background-clip: border-box;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.button-effect:hover {
-  background-position: left bottom;
-  color: transparent;
-}
-</style>
+<style></style>

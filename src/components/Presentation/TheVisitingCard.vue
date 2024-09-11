@@ -1,7 +1,7 @@
 <template>
   <section
     id="section_02"
-    class="font-bolt flex max-w-screen-md flex-col items-center justify-center space-y-4 rounded-md p-5 font-serif text-lg text-white md:text-2xl"
+    class="font-bolt flex max-w-screen-sm flex-col items-center justify-center space-y-4 rounded-md p-5 font-sans text-lg text-kamil-blue-dark md:text-xl"
   >
     <div class="flex w-fit items-center justify-between text-center">
       <img :src="scissorsUrl" alt="" class="h-4 md:h-9" />
@@ -10,7 +10,9 @@
     </div>
     <div class="flex items-center space-x-4">
       <span>FRISØR</span>
-      <span class="text-4xl text-orange-300 md:text-9xl">ANNA</span>
+      <span class="text-4xl text-kamil-orange-dark md:text-6xl">
+        AN<span class="inline-block scale-x-[-1] transform">N</span>A
+      </span>
       <span>SALONG</span>
     </div>
     <div class="text-center">
@@ -20,6 +22,7 @@
     </div>
   </section>
 </template>
+
 <script setup>
 const scissorsUrl = "./Svg/scissors.svg";
 </script>
