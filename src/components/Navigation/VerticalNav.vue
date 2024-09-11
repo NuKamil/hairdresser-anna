@@ -20,8 +20,6 @@
 import { ref } from "vue";
 import { onMounted, onUnmounted } from "vue";
 
-const scissorsUrl = "./Svg/scissors.svg";
-
 const menuItems = ref([
   { text: "Main", hash: "main" },
   { text: "About Me", hash: "about_me" },

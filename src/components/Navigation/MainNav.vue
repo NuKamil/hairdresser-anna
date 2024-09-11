@@ -23,7 +23,11 @@
 
         <!-- Przyciski widoczne na większych ekranach -->
         <div class="ml-auto mr-5 hidden h-full items-center md:flex">
-          <profile-image v-if="isLogged" />
+          <profile-image v-if="isLogged">
+            <template #extra-button>
+              <action-button @click="login" :is-logged="isLogged" />
+            </template>
+          </profile-image>
           <action-button @click="login" :is-logged="isLogged" v-else />
         </div>
 
@@ -53,9 +57,9 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
-import ActionButton from "@/components/ActionButton.vue";
+import ActionButton from "@/components/Shared/ActionButton.vue";
 import HamburgerMenu from "@/components/Navigation/HamburgerMenu.vue"; // Import komponentu
-import ProfileImage from "@/components/ProfileImage.vue";
+import ProfileImage from "@/components/Navigation/ProfileImage.vue";
 
 import { useRouter } from "vue-router";
 
@@ -80,6 +84,8 @@ const login = () => {
     router.push({
       name: "Login",
     });
+  } else {
+    isLogged.value = false;
   }
 };
 </script>

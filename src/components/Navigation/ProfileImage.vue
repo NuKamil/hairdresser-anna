@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col text-sm">
     <button
       @click="toggleDropdown"
       class="border-1 relative rounded-full border-solid border-kamil-orange-dark bg-kamil-orange-dark p-1 transition-shadow duration-300 hover:shadow-blue"
@@ -9,15 +9,22 @@
 
     <!-- Dropdown -->
     <div class="bg-white text-kamil-blue-dark">
-      <ul v-show="isOpen" class="absolute h-max w-max origin-top-right rounded-md py-1 shadow-lg">
+      <ul
+        v-show="isOpen"
+        class="absolute right-0 flex h-max w-max origin-top-right flex-col items-center rounded-md p-2 py-1 shadow-lg"
+      >
         <li>
-          <a href="#">text1</a>
+          <a href="#" class="select-effect">Dashboard</a>
         </li>
         <li>
-          <a href="#">text2</a>
+          <a href="#">Settings</a>
         </li>
         <li>
           <a href="#">text3</a>
+        </li>
+
+        <li>
+          <slot name="extra-button"></slot>
         </li>
       </ul>
     </div>
@@ -25,6 +32,8 @@
 </template>
 
 <script setup lang="ts">
+import ActionButton from "../Shared/ActionButton.vue";
+
 import { ref } from "vue";
 const image = ref("/Pictures/20240907_102924.jpg");
 

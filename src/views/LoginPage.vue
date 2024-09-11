@@ -50,6 +50,6 @@
 </template>
 
 <script setup>
-import ActionButton from "@/components/ActionButton.vue";
+import ActionButton from "@/components/Shared/ActionButton.vue";
 const url = "/Pictures/beauty-salon-4043096_1920.jpg";
 </script>
