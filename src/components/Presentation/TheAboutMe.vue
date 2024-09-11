@@ -1,6 +1,7 @@
 <template>
   <div id="about_me" class="flex h-screen min-h-screen shrink-0 snap-start justify-center">
     <div class="my-auto w-2/3">
+      <h1 class="mb-1 text-center text-4xl text-kamil-orange-dark md:text-6xl">ABOUT ME</h1>
       <ul
         class="no-scrollbar mb-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth p-4"
         :class="{
@@ -20,7 +21,7 @@
         </li>
       </ul>
       <!-- <img :src="urlHeaderPicture" alt="" class="midn-h-full absolute -z-10 w-auto" /> -->
-      <section class="text-kamil-blue-dark flex font-sans">
+      <section class="flex font-sans text-kamil-blue-dark">
         <div>
           For 17 år siden kom en ung jente fra Polen til Norge med en stor drøm. Hun hadde nylig
           fullført sin utdanning som frisør i hjemlandet, og med en lidenskap for faget bestemte hun

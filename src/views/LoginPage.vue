@@ -32,12 +32,7 @@
                 >Lost Password?</a
               >
             </div>
-            <button
-              type="submit"
-              class="w-full rounded-full border-0 bg-kamil-orange-dark px-3 py-2 text-kamil-blue-dark transition-shadow duration-300 hover:shadow-blue"
-            >
-              Login to your account
-            </button>
+            <action-button class="w-full" />
             <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
               Not registered?
               <a href="#" class="text-blue-700 hover:underline dark:text-blue-500"
@@ -55,5 +50,6 @@
 </template>
 
 <script setup>
+import ActionButton from "@/components/ActionButton.vue";
 const url = "/Pictures/beauty-salon-4043096_1920.jpg";
 </script>
