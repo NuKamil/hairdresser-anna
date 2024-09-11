@@ -55,13 +55,13 @@ import { useRoute } from "vue-router";
 import ActionButton from "@/components/ActionButton.vue";
 import HamburgerMenu from "@/components/Navigation/HamburgerMenu.vue"; // Import komponentu
 
-const isLogged = ref(false);
+const isLogged = ref(true);
 
 const menuItems = ref([
   { text: "HOME", url: "/" },
   { text: "SHOP", url: "/shop" },
   { text: "NEWS", url: "/news" },
-  { text: "BOOK APPOINTMENT", url: "/book" },
+  { text: "BOOK NOW", url: "/book" },
 ]);
 
 const isActiveLink = (routePath) => {

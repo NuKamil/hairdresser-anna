@@ -1,10 +1,10 @@
 <template>
   <div class="h-screen bg-slate-300">
-    <div class="full mx-auto flex h-full w-3/4 items-center justify-center">
+    <div class="full mx-auto flex h-full w-2/3 items-center justify-center">
       <div class="flex rounded-lg border-0 bg-white shadow-lg">
         <section class="m-6 w-full md:w-1/2">
-          <form action="#" class="space-y-6">
-            <h3 class="text-kamil-blue-dark text-xl font-medium">Sign in to our salon</h3>
+          <form action="#" class="mx-auto space-y-6">
+            <h3 class="text-xl font-medium text-kamil-blue-dark">Sign in to our salon</h3>
             <div class="">
               <label for="email" class="text-kamil-orange-dark">Your email</label>
               <input
@@ -26,7 +26,7 @@
                 <input type="checkbox" name="" id="remember" />
               </div>
               <div class="ml-3 text-sm">
-                <label for="remember" class="text-kamil-blue-dark font-medium">Remember me</label>
+                <label for="remember" class="font-medium text-kamil-blue-dark">Remember me</label>
               </div>
               <a href="#" class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
                 >Lost Password?</a
@@ -34,7 +34,7 @@
             </div>
             <button
               type="submit"
-              class="bg-kamil-orange-dark text-kamil-blue-dark w-full rounded border-0 px-3 py-2 transition-shadow duration-300 hover:shadow-blue"
+              class="w-full rounded-full border-0 bg-kamil-orange-dark px-3 py-2 text-kamil-blue-dark transition-shadow duration-300 hover:shadow-blue"
             >
               Login to your account
             </button>
