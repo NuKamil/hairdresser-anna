@@ -23,8 +23,8 @@
 
         <!-- Przyciski widoczne na większych ekranach -->
         <div class="ml-auto mr-5 hidden h-full items-center md:flex">
-          <action-button @click="login" isLogged="isLogged" v-if="isLogged" />
-          <profile-image v-else />
+          <profile-image v-if="isLogged" />
+          <action-button @click="login" :is-logged="isLogged" v-else />
         </div>
 
         <!-- Hamburger menu, widoczne na małych ekranach -->
@@ -42,7 +42,7 @@
           </template>
 
           <template #extra-button>
-            <action-button @click="login" />
+            <action-button @click="login" :is-logged="isLogged" />
           </template>
         </HamburgerMenu>
       </div>
@@ -76,9 +76,11 @@ const isActiveLink = (routePath) => {
 };
 
 const login = () => {
-  router.push({
-    name: "Login",
-  });
+  if (isLogged.value === false) {
+    router.push({
+      name: "Login",
+    });
+  }
 };
 </script>
 

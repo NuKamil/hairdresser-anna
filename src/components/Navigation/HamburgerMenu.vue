@@ -19,11 +19,11 @@
     </button>
 
     <!-- Menu mobilne - pojawia się po kliknięciu ikony hamburgera -->
-    <div v-if="isOpen" class="absolute right-0 top-16 w-full bg-white md:hidden">
+    <div v-show="isOpen" class="absolute right-0 top-16 w-full bg-white md:hidden">
       <ul class="flex flex-col items-center space-y-4 py-4">
         <!-- Slot dla elementów menu -->
         <slot
-          class="border-kamil-green-light w-full border-b border-solid"
+          class="w-full border-b border-solid border-kamil-green-light"
           name="menu-items"
         ></slot>
         <!-- Slot dla dodatkowych przycisków (np. Sign In) -->
