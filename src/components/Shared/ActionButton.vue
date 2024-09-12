@@ -10,11 +10,11 @@
 import { computed } from "vue";
 
 const props = defineProps({
-  isLogged: Boolean,
-  default: false,
+  isLoggeIn: Boolean,
 });
 
 const text = computed(() => {
-  return !props.isLogged ? "Sign in" : "Log out";
+  console.log(props.isLoggeIn);
+  return !props.isLoggeIn ? "Sign in" : "Log out";
 });
 </script>

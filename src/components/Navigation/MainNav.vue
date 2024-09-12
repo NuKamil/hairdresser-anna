@@ -23,12 +23,12 @@
 
         <!-- Przyciski widoczne na większych ekranach -->
         <div class="ml-auto mr-5 hidden h-full items-center md:flex">
-          <profile-image v-if="isLogged">
+          <profile-image v-if="isLoggeIn">
             <template #extra-button>
-              <action-button @click="login" :is-logged="isLogged" />
+              <action-button @click="login" :is-logged="isLoggeIn" />
             </template>
           </profile-image>
-          <action-button @click="login" :is-logged="isLogged" v-else />
+          <action-button @click="login" :is-logged="isLoggeIn" v-else />
         </div>
 
         <!-- Hamburger menu, widoczne na małych ekranach -->
@@ -46,7 +46,7 @@
           </template>
 
           <template #extra-button>
-            <action-button @click="login" :is-logged="isLogged" />
+            <action-button @click="login" :is-logged="isLoggeIn" />
           </template>
         </HamburgerMenu>
       </div>
@@ -54,9 +54,11 @@
   </header>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
+import { useUserStore } from "@/stores/user";
+
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import HamburgerMenu from "@/components/Navigation/HamburgerMenu.vue"; // Import komponentu
 import ProfileImage from "@/components/Navigation/ProfileImage.vue";
@@ -65,7 +67,10 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const isLogged = ref(true);
+const userStore = useUserStore();
+
+const isLoggeIn = computed(() => userStore.isLoggeIn);
+const loginUser = userStore.loginUser;
 
 const menuItems = ref([
   { text: "HOME", url: "/" },
@@ -80,12 +85,12 @@ const isActiveLink = (routePath) => {
 };
 
 const login = () => {
-  if (isLogged.value === false) {
+  if (!isLoggeIn.value) {
     router.push({
       name: "Login",
     });
   } else {
-    isLogged.value = false;
+    loginUser;
   }
 };
 </script>
