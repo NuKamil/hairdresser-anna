@@ -54,8 +54,8 @@
   </header>
 </template>
 
-<script setup>
-import { ref, computed } from "vue";
+<script setup lang="ts">
+import { ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useUserStore } from "@/stores/user";
 
@@ -68,9 +68,9 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const userStore = useUserStore();
-
 const isLoggeIn = computed(() => userStore.isLoggeIn);
-const loginUser = userStore.loginUser;
+const logInUser = userStore.logInUser;
+const logOutUser = userStore.logOutUser;
 
 const menuItems = ref([
   { text: "HOME", url: "/" },
@@ -89,8 +89,14 @@ const login = () => {
     router.push({
       name: "Login",
     });
+    setTimeout(() => {
+      router.push({
+        name: "Home",
+      });
+      logInUser();
+    }, 1000);
   } else {
-    loginUser;
+    logOutUser();
   }
 };
 </script>

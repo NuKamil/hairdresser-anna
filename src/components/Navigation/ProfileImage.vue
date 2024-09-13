@@ -32,8 +32,6 @@
 </template>
 
 <script setup lang="ts">
-import ActionButton from "../Shared/ActionButton.vue";
-
 import { ref } from "vue";
 const image = ref("/Pictures/20240907_102924.jpg");
 
