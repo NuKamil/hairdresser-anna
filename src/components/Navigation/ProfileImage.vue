@@ -8,34 +8,35 @@
     </button>
 
     <!-- Dropdown -->
-    <div class="bg-white text-kamil-blue-dark">
-      <ul
-        v-show="isOpen"
-        class="absolute right-0 flex h-max w-max origin-top-right flex-col items-center rounded-md p-2 py-1 shadow-lg"
-      >
-        <li>
-          <a href="#" class="select-effect">Dashboard</a>
-        </li>
-        <li>
-          <a href="#">Settings</a>
-        </li>
-        <li>
-          <a href="#">text3</a>
-        </li>
-
-        <li>
-          <slot name="extra-button"></slot>
-        </li>
-      </ul>
-    </div>
+    <dropdown v-show="isOpen">
+      <template #extra-button>
+        <action-button :is-logged="props.isLogged" @click="handleClick" />
+      </template>
+    </dropdown>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref } from "vue";
+import Dropdown from "@/components/Shared/Dropdown.vue";
+import ActionButton from "@/components/Shared/ActionButton.vue";
+
 const image = ref("/Pictures/20240907_102924.jpg");
 
+const emit = defineEmits(["login"]);
+
+const props = defineProps({
+  isLogged: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 const isOpen = ref(false);
+
+const handleClick = () => {
+  emit("login");
+};
 
 const toggleDropdown = () => {
   isOpen.value = !isOpen.value;
