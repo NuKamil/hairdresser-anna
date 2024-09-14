@@ -22,7 +22,7 @@
         </nav>
 
         <!-- Przyciski widoczne na większych ekranach -->
-        <div class="ml-auto mr-5 hidden h-full items-center md:flex">
+        <div class="ml-auto mr-10 hidden h-full items-center md:flex">
           <profile-image v-if="isLoggeIn" :is-logged="isLoggeIn" @login="login" />
           <action-button @click="login" :is-logged="isLoggeIn" v-else />
         </div>
@@ -76,12 +76,12 @@ const menuItems = ref([
   { text: "BOOK NOW", url: "/book" },
 ]);
 
-const isActiveLink = (routePath) => {
+const isActiveLink = (routePath: string): boolean => {
   const route = useRoute();
   return route.path === routePath;
 };
 
-const login = () => {
+const login = (): void => {
   if (!isLoggeIn.value) {
     router.push({
       name: "Login",

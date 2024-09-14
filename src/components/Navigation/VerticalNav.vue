@@ -1,5 +1,5 @@
 <template>
-  <ul class="ml-2 hidden w-max flex-col font-sans text-lg md:flex">
+  <ul class="hidden w-max flex-col font-sans text-lg md:flex">
     <li class="mb-5 rotate-45 cursor-pointer" v-for="item in menuItems" :key="item.hash">
       <a :href="item.hash" @click.prevent="scrollToSection(item)"
         ><div

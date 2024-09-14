@@ -1,23 +1,22 @@
 <template>
   <div class="bg-white text-kamil-blue-dark">
-    <ul
-      class="absolute right-0 flex h-max w-max origin-top-right flex-col items-center rounded-md p-2 py-1 shadow-lg"
-    >
-      <li>
-        <a href="#" class="select-effect">Dashboard</a>
+    <ul class="absolute right-0 h-max w-max origin-top-right rounded-md p-3 py-2 shadow-lg">
+      <li class="select-effect py-1" v-for="menuItem in menuItems" :key="menuItem.text">
+        <a href="#" class="">{{ menuItem.text }}</a>
       </li>
-      <li>
-        <a href="#">Settings</a>
-      </li>
-      <li>
-        <a href="#">text3</a>
-      </li>
-
-      <li>
+      <div class="mt-2 flex w-full items-center justify-center">
         <slot name="extra-button"></slot>
-      </li>
+      </div>
     </ul>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+const menuItems = ref([
+  { text: "Dashboard", url: "/dashboard" },
+  { text: "Settings", url: "/settings" },
+  { text: "Purchase history", url: "/purchase" },
+]);
+</script>
