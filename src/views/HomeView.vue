@@ -1,5 +1,5 @@
 <template>
-  <div class="no-scrollbar relative h-screen snap-y snap-mandatory overflow-y-scroll">
+  <div class="no-scrollbar relative h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth">
     <div class="fixed right-10 top-1/2">
       <vertical-nav />
     </div>

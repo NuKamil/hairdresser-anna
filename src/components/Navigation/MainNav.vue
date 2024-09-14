@@ -22,9 +22,9 @@
         </nav>
 
         <!-- Przyciski widoczne na większych ekranach -->
-        <div class="ml-auto mr-5 hidden h-full items-center md:flex">
-          <action-button @click="login" isLogged="isLogged" v-if="isLogged" />
-          <profile-image v-else />
+        <div class="ml-auto mr-10 hidden h-full items-center md:flex">
+          <profile-image v-if="isLoggeIn" :is-logged="isLoggeIn" @login="login" />
+          <action-button @click="login" :is-logged="isLoggeIn" v-else />
         </div>
 
         <!-- Hamburger menu, widoczne na małych ekranach -->
@@ -42,7 +42,7 @@
           </template>
 
           <template #extra-button>
-            <action-button @click="login" />
+            <action-button @click="login" :is-logged="isLoggeIn" />
           </template>
         </HamburgerMenu>
       </div>
@@ -53,15 +53,21 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
-import ActionButton from "@/components/ActionButton.vue";
-import HamburgerMenu from "@/components/Navigation/HamburgerMenu.vue"; // Import komponentu
-import ProfileImage from "@/components/ProfileImage.vue";
+import { useUserStore } from "@/stores/user";
+
+import ActionButton from "@/components/Shared/ActionButton.vue";
+import HamburgerMenu from "@/components/Navigation/HamburgerMenu.vue";
+import ProfileImage from "@/components/Navigation/ProfileImage.vue";
 
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const isLogged = ref(true);
+const userStore = useUserStore();
+const isLoggeIn = computed(() => userStore.isLoggeIn);
+
+const logInUser = userStore.logInUser;
+const logOutUser = userStore.logOutUser;
 
 const menuItems = ref([
   { text: "HOME", url: "/" },
@@ -70,15 +76,25 @@ const menuItems = ref([
   { text: "BOOK NOW", url: "/book" },
 ]);
 
-const isActiveLink = (routePath) => {
+const isActiveLink = (routePath: string): boolean => {
   const route = useRoute();
   return route.path === routePath;
 };
 
-const login = () => {
-  router.push({
-    name: "Login",
-  });
+const login = (): void => {
+  if (!isLoggeIn.value) {
+    router.push({
+      name: "Login",
+    });
+    setTimeout(() => {
+      router.push({
+        name: "Home",
+      });
+      logInUser();
+    }, 1000);
+  } else {
+    logOutUser();
+  }
 };
 </script>
 
