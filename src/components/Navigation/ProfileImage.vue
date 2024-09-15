@@ -20,8 +20,10 @@
           </span>
         </button>
       </div>
-      <span class="cursor-default">8000,00$</span>
+      <span class="cursor-default text-lg">8340</span>
     </div>
+
+    <!-- Profile Image -->
     <div class="flex flex-col text-sm">
       <button
         @click="toggleDropdown"
@@ -31,11 +33,13 @@
       </button>
 
       <!-- Dropdown -->
-      <dropdown v-show="isOpen">
-        <template #extra-button>
-          <action-button :is-logged="props.isLogged" @click="handleClick" />
-        </template>
-      </dropdown>
+      <transition name="fade">
+        <dropdown v-show="isOpen">
+          <template #extra-button>
+            <action-button :is-logged="props.isLogged" @click="handleClick" />
+          </template>
+        </dropdown>
+      </transition>
     </div>
   </div>
 </template>
@@ -44,7 +48,6 @@
 import { ref } from "vue";
 import Dropdown from "@/components/Shared/Dropdown.vue";
 import ActionButton from "@/components/Shared/ActionButton.vue";
-import { icon } from "@fortawesome/fontawesome-svg-core";
 
 const image = ref("Pictures/20240907_102924.jpg");
 
@@ -67,3 +70,19 @@ const toggleDropdown = () => {
   isOpen.value = !isOpen.value;
 };
 </script>
+
+<style>
+/* Definiujemy animacje fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
+</style>

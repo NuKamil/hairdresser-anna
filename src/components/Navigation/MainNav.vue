@@ -1,7 +1,7 @@
 <template>
   <header class="w-full text-lg font-semibold">
-    <div class="fixed left-0 top-0 h-16 w-full">
-      <div class="mx-auto flex h-full w-full">
+    <div class="fixed left-0 top-0 h-16 w-full border-b border-solid">
+      <div class="flex h-full w-full">
         <!-- Navbar widoczny tylko na większych ekranach -->
         <nav class="absolute left-1/2 top-0 hidden h-full -translate-x-1/2 transform md:flex">
           <ul class="flex h-full list-none justify-center font-sans text-kamil-orange-dark">
@@ -21,14 +21,8 @@
           </ul>
         </nav>
 
-        <!-- Przyciski widoczne na większych ekranach -->
-        <div class="ml-auto mr-10 hidden h-full items-center md:flex">
-          <profile-image v-if="isLoggeIn" :is-logged="isLoggeIn" @login="login" />
-          <action-button @click="login" :is-logged="isLoggeIn" v-else />
-        </div>
-
         <!-- Hamburger menu, widoczne na małych ekranach -->
-        <div class="mx-auto mt-5 md:hidden">
+        <div class="ml-5 flex h-full items-center md:hidden">
           <HamburgerMenu>
             <!-- Przekazanie slotów do HamburgerMenu -->
             <template #menu-items>
@@ -41,11 +35,13 @@
                 </router-link>
               </li>
             </template>
-
-            <template #extra-button>
-              <action-button @click="login" :is-logged="isLoggeIn" />
-            </template>
           </HamburgerMenu>
+        </div>
+
+        <!-- Przyciski widoczne na większych ekranach -->
+        <div class="ml-auto mr-5 flex h-full items-center">
+          <profile-image v-if="isLoggeIn" :is-logged="isLoggeIn" @login="login" />
+          <action-button @click="login" :is-logged="isLoggeIn" v-else />
         </div>
       </div>
     </div>
