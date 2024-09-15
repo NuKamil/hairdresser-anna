@@ -28,7 +28,7 @@
         </div>
 
         <!-- Hamburger menu, widoczne na małych ekranach -->
-        <div class="mx-auto mt-5">
+        <div class="mx-auto mt-5 md:hidden">
           <HamburgerMenu>
             <!-- Przekazanie slotów do HamburgerMenu -->
             <template #menu-items>
