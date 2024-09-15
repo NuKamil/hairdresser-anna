@@ -46,10 +46,10 @@ import { ref, onMounted } from "vue";
 const urlHeaderPicture = "/Pictures/beauty-salon-4043096_1920.jpg";
 
 const pictures = ref([
-  { picture1: "/Pictures/beauty-salon-4043096_1920.jpg" },
-  { picture2: "/Pictures/hair-4556496_1920.jpg" },
-  { picture3: "/Pictures/hairdresser-3173438_1920.jpg" },
-  { picture4: "/Pictures/hairdresser-4682908_1920.jpg" },
+  { picture1: "Pictures/beauty-salon-4043096_1920.jpg" },
+  { picture2: "Pictures/hair-4556496_1920.jpg" },
+  { picture3: "Pictures/hairdresser-3173438_1920.jpg" },
+  { picture4: "Pictures/hairdresser-4682908_1920.jpg" },
 ]);
 
 // Zmienna sprawdzająca szerokość ekranu

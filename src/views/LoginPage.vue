@@ -51,5 +51,5 @@
 
 <script setup>
 import ActionButton from "@/components/Shared/ActionButton.vue";
-const url = "/Pictures/beauty-salon-4043096_1920.jpg";
+const url = "Pictures/beauty-salon-4043096_1920.jpg";
 </script>

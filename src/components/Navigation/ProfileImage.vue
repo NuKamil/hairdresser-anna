@@ -46,7 +46,7 @@ import Dropdown from "@/components/Shared/Dropdown.vue";
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import { icon } from "@fortawesome/fontawesome-svg-core";
 
-const image = ref("/Pictures/20240907_102924.jpg");
+const image = ref("Pictures/20240907_102924.jpg");
 
 const emit = defineEmits(["login"]);
 
