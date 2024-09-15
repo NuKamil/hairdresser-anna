@@ -3,25 +3,31 @@
     <div class="mr-3 flex h-full items-center text-2xl text-kamil-blue-dark">
       <div class="mx-3 flex">
         <button class="mr-2">
-          <font-awesome-icon :icon="['fas', 'heart']" class="text-kamil-orange-dark" />
+          <font-awesome-icon
+            :icon="['fas', 'heart']"
+            class="text-kamil-orange-dark transition-colors duration-300 hover:text-kamil-green-light"
+          />
         </button>
         <button class="relative shadow-kamil-blue-light">
-          <font-awesome-icon :icon="['fas', 'bag-shopping']" class="text-kamil-orange-dark" />
+          <font-awesome-icon
+            :icon="['fas', 'bag-shopping']"
+            class="rounded-full text-kamil-orange-dark transition-colors duration-300 hover:text-kamil-green-light"
+          />
           <span
-            class="absolute left-3 top-0 flex h-5 w-5 items-center justify-center rounded-full bg-kamil-blue-light text-xs"
+            class="min-w-auto absolute bottom-4 left-3 flex aspect-square items-center justify-center rounded-full bg-kamil-blue-light px-1 text-xs"
           >
-            3
+            13
           </span>
         </button>
       </div>
-      <span class="cursor-default">123,40</span>
+      <span class="cursor-default">8000,00$</span>
     </div>
     <div class="flex flex-col text-sm">
       <button
         @click="toggleDropdown"
-        class="border-1 relative rounded-full border-solid border-kamil-orange-dark bg-kamil-orange-dark p-1 transition-shadow duration-300 hover:shadow-blue"
+        class="border-1 relative h-10 w-10 rounded-full border-solid border-kamil-orange-dark bg-kamil-orange-dark p-1 transition-shadow duration-300 hover:shadow-blue"
       >
-        <img :src="image" alt="" class="h-8 w-8 rounded-full object-contain object-center" />
+        <img :src="image" alt="" class="h-full w-full overflow-hidden rounded-full object-cover" />
       </button>
 
       <!-- Dropdown -->
