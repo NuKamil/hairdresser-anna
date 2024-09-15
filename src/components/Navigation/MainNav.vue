@@ -28,23 +28,25 @@
         </div>
 
         <!-- Hamburger menu, widoczne na małych ekranach -->
-        <HamburgerMenu>
-          <!-- Przekazanie slotów do HamburgerMenu -->
-          <template #menu-items>
-            <li v-for="menuItem in menuItems" :key="menuItem.url">
-              <router-link
-                :class="[isActiveLink(menuItem.url) ? 'text-kamil-orange-dark' : 'text-black']"
-                :to="menuItem.url"
-              >
-                {{ menuItem.text }}
-              </router-link>
-            </li>
-          </template>
+        <div class="mx-auto mt-5">
+          <HamburgerMenu>
+            <!-- Przekazanie slotów do HamburgerMenu -->
+            <template #menu-items>
+              <li v-for="menuItem in menuItems" :key="menuItem.url">
+                <router-link
+                  :class="[isActiveLink(menuItem.url) ? 'text-kamil-orange-dark' : 'text-black']"
+                  :to="menuItem.url"
+                >
+                  {{ menuItem.text }}
+                </router-link>
+              </li>
+            </template>
 
-          <template #extra-button>
-            <action-button @click="login" :is-logged="isLoggeIn" />
-          </template>
-        </HamburgerMenu>
+            <template #extra-button>
+              <action-button @click="login" :is-logged="isLoggeIn" />
+            </template>
+          </HamburgerMenu>
+        </div>
       </div>
     </div>
   </header>

@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div ref="dropdownRef">
     <!-- Ikona hamburgera widoczna na małych ekranach -->
     <button @click="toggleMenu" class="text-kamil-orange-dark md:hidden">
       <svg
-        class="h-8 w-8"
+        class="h-10 w-10"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -34,12 +34,27 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 // Obsługa otwierania i zamykania menu
 const isOpen = ref(false);
+const dropdownRef = ref(null);
 
 const toggleMenu = () => {
   isOpen.value = !isOpen.value;
 };
+
+const handleClickOutside = (event) => {
+  if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
+    isOpen.value = false; // Zamknij dropdown, jeśli kliknięto poza nim
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("click", handleClickOutside);
+});
 </script>
