@@ -1,7 +1,7 @@
 <template>
-  <div id="about_me" class="flex h-screen min-h-screen shrink-0 snap-start justify-center">
-    <div class="my-auto w-2/3">
-      <h1 class="mb-1 text-center text-4xl text-kamil-orange-dark md:text-6xl">ABOUT ME</h1>
+  <div id="about_me" class="flex min-h-screen shrink-0 snap-start justify-center">
+    <div id="myUl" class="my-auto mt-16 w-2/3">
+      <h1 class="mb-1 text-center text-2xl text-kamil-orange-dark md:text-4xl">ABOUT ME</h1>
       <ul
         class="no-scrollbar mb-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth p-4"
         :class="{
@@ -11,7 +11,7 @@
         <li
           v-for="(item, index) in pictures"
           :key="index"
-          class="h-64 w-full flex-shrink-0 snap-center md:h-72 md:w-96 lg:h-auto lg:w-auto"
+          class="h-64 w-full flex-shrink-0 snap-center md:h-72 md:w-64 lg:h-auto lg:w-auto"
         >
           <img
             :src="Object.values(item)[0]"
@@ -65,3 +65,5 @@ onMounted(() => {
   window.addEventListener("resize", checkScreenSize);
 });
 </script>
+
+<style scoped></style>
