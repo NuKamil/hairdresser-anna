@@ -1,6 +1,6 @@
 <template>
   <header class="w-full text-lg font-semibold">
-    <div class="fixed left-0 top-0 h-16 w-full border-b border-solid">
+    <div class="fixed left-0 top-0 h-16 w-full">
       <div class="flex h-full w-full">
         <!-- Navbar widoczny tylko na większych ekranach -->
         <nav class="absolute left-1/2 top-0 hidden h-full -translate-x-1/2 transform md:flex">
