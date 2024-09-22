@@ -1,15 +1,18 @@
 <template>
-  <div id="about_me" class="flex h-screen shrink-0 snap-start items-center md:bg-kamil-blue-light">
+  <div
+    id="about_me"
+    class="flex h-screen shrink-0 snap-start items-center bg-gradient-to-t from-white via-kamil-blue-light via-40% to-white to-70%"
+  >
     <div id="myUl" class="mx-6 items-center gap-16 md:mx-28 md:flex">
-      <div class="mb-9 md:mb-0">
+      <div class="mb-6 md:mb-0">
         <img
           :src="picture"
           alt=""
-          class="mx-auto h-64 rounded-lg object-cover shadow-xl md:h-max"
+          class="mx-auto max-h-96 min-w-64 rounded-sm object-cover shadow-xl"
         />
       </div>
-      <section class="font-sans text-kamil-blue-dark">
-        <h1 class="mb-1 text-2xl text-kamil-orange-dark md:text-4xl">WHO AM I</h1>
+      <section class="no-scrollbar max-h-96 max-w-lg overflow-auto font-sans text-kamil-blue-dark">
+        <h1 class="mb-1 text-2xl text-kamil-orange-dark md:text-4xl">About Me</h1>
         <div class="text-pretty text-xs md:text-sm">
           For 17 år siden kom en ung jente fra Polen til Norge med en stor drøm. Hun hadde nylig
           fullført sin utdanning som frisør i hjemlandet, og med en lidenskap for faget bestemte hun

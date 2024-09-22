@@ -33,13 +33,11 @@
       </button>
 
       <!-- Dropdown -->
-      <transition name="fade">
-        <dropdown v-show="isOpen">
-          <template #extra-button>
-            <action-button :is-logged="props.isLogged" @click="handleClick" />
-          </template>
-        </dropdown>
-      </transition>
+      <dropdown v-show="isOpen" :menu-items="menuItems">
+        <template #extra-button>
+          <action-button :is-logged="props.isLogged" @click="handleClick" />
+        </template>
+      </dropdown>
     </div>
   </div>
 </template>
@@ -52,6 +50,12 @@ import ActionButton from "@/components/Shared/ActionButton.vue";
 const image = ref("Pictures/20240907_102924.jpg");
 
 const emit = defineEmits(["login"]);
+
+const menuItems = ref([
+  { text: "DASHBOARD", url: "/dashboard" },
+  { text: "SETTINGS", url: "/settings" },
+  { text: "PURCHASE HISTORY", url: "/purchase" },
+]);
 
 const props = defineProps({
   isLogged: {

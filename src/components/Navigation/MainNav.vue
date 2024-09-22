@@ -40,7 +40,7 @@
 
         <!-- Przyciski widoczne na większych ekranach -->
         <div class="ml-auto mr-5 flex h-full items-center">
-          <profile-image v-if="isLoggeIn" :is-logged="isLoggeIn" @login="login" />
+          <profile-controls v-if="isLoggeIn" :is-logged="isLoggeIn" @login="login" />
           <action-button @click="login" :is-logged="isLoggeIn" v-else />
         </div>
       </div>
@@ -55,7 +55,7 @@ import { useUserStore } from "@/stores/user";
 
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import HamburgerMenu from "@/components/Navigation/HamburgerMenu.vue";
-import ProfileImage from "@/components/Navigation/ProfileImage.vue";
+import ProfileControls from "@/components/Navigation/ProfileControls.vue";
 
 import { useRouter } from "vue-router";
 

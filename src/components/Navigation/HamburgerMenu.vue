@@ -19,27 +19,24 @@
     </button>
 
     <!-- Menu mobilne - pojawia się po kliknięciu ikony hamburgera -->
-    <transition name="fade">
-      <div
-        v-if="isOpen"
-        class="absolute right-0 top-16 w-full scale-95 transform bg-white opacity-0 md:hidden"
-        :class="{ 'scale-100 opacity-100': isOpen }"
-      >
-        <ul class="flex flex-col items-center space-y-4 px-9 py-4 shadow-lg">
-          <!-- Slot dla elementów menu -->
-          <slot name="menu-items"></slot>
-        </ul>
-      </div>
-    </transition>
+    <dropdown v-if="isOpen" :menu-items="menuItems" />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import Dropdown from "@/components/Shared/Dropdown.vue";
 
 // Obsługa otwierania i zamykania menu
 const isOpen = ref(false);
 const dropdownRef = ref(null);
+
+const menuItems = ref([
+  { text: "HOME", url: "/" },
+  { text: "SHOP", url: "/shop" },
+  { text: "NEWS", url: "/news" },
+  { text: "BOOK NOW", url: "/book" },
+]);
 
 const toggleMenu = () => {
   isOpen.value = !isOpen.value;
