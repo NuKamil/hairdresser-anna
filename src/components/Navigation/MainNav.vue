@@ -1,9 +1,11 @@
 <template>
-  <header class="w-full text-lg font-semibold">
+  <header class="w-full font-semibold">
     <div class="fixed left-0 top-0 h-16 w-full">
       <div class="flex h-full w-full">
         <!-- Navbar widoczny tylko na większych ekranach -->
-        <nav class="absolute left-1/2 top-0 hidden h-full -translate-x-1/2 transform md:flex">
+        <nav
+          class="absolute left-1/2 top-0 hidden h-full -translate-x-1/2 transform text-lg md:flex"
+        >
           <ul class="flex h-full list-none justify-center font-sans text-kamil-orange-dark">
             <li class="ml-9 h-full first:ml-0" v-for="menuItem in menuItems" :key="menuItem.text">
               <router-link
@@ -23,19 +25,7 @@
 
         <!-- Hamburger menu, widoczne na małych ekranach -->
         <div class="ml-5 flex h-full items-center md:hidden">
-          <HamburgerMenu>
-            <!-- Przekazanie slotów do HamburgerMenu -->
-            <template #menu-items>
-              <li v-for="menuItem in menuItems" :key="menuItem.url">
-                <router-link
-                  :class="[isActiveLink(menuItem.url) ? 'text-kamil-orange-dark' : 'text-black']"
-                  :to="menuItem.url"
-                >
-                  {{ menuItem.text }}
-                </router-link>
-              </li>
-            </template>
-          </HamburgerMenu>
+          <HamburgerMenu />
         </div>
 
         <!-- Przyciski widoczne na większych ekranach -->

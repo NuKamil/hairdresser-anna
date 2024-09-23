@@ -1,6 +1,7 @@
 <template>
   <div class="flex h-full items-center justify-center">
-    <div class="mr-3 flex h-full items-center text-2xl text-kamil-blue-dark">
+    <div class="relative mr-3 flex h-full items-center text-2xl text-kamil-blue-dark">
+      <!-- Profile Icon buttons -->
       <div class="mx-3 flex">
         <button class="mr-2">
           <font-awesome-icon
@@ -24,16 +25,16 @@
     </div>
 
     <!-- Profile Image -->
-    <div class="flex flex-col text-sm">
+    <div class="flex flex-col">
       <button
-        @click="toggleDropdown"
+        @click.stop="toggleDropdown('profile')"
         class="border-1 relative h-10 w-10 rounded-full border-solid border-kamil-orange-dark bg-kamil-orange-dark p-1 transition-shadow duration-300 hover:shadow-blue"
       >
         <img :src="image" alt="" class="h-full w-full overflow-hidden rounded-full object-cover" />
       </button>
 
       <!-- Dropdown -->
-      <dropdown v-show="isOpen" :menu-items="menuItems">
+      <dropdown v-model:is-open="isOpen.profile" :menu-items="menuItems" menu-type="profile">
         <template #extra-button>
           <action-button :is-logged="props.isLogged" @click="handleClick" />
         </template>
@@ -42,19 +43,23 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
+import { useDropdownStore } from "@/stores/dropdown";
 import Dropdown from "@/components/Shared/Dropdown.vue";
 import ActionButton from "@/components/Shared/ActionButton.vue";
 
 const image = ref("Pictures/20240907_102924.jpg");
 
+const dropdownStore = useDropdownStore();
+const isOpen = dropdownStore.isOpen;
+
 const emit = defineEmits(["login"]);
 
 const menuItems = ref([
-  { text: "DASHBOARD", url: "/dashboard" },
-  { text: "SETTINGS", url: "/settings" },
-  { text: "PURCHASE HISTORY", url: "/purchase" },
+  { text: "Dashboard", url: "/dashboard" },
+  { text: "Settings", url: "/settings" },
+  { text: "Purchase History", url: "/purchase" },
 ]);
 
 const props = defineProps({
@@ -64,15 +69,11 @@ const props = defineProps({
   },
 });
 
-const isOpen = ref(false);
-
 const handleClick = () => {
   emit("login");
 };
 
-const toggleDropdown = () => {
-  isOpen.value = !isOpen.value;
+const toggleDropdown = (menuType: "profile" | "hamburger") => {
+  dropdownStore.toggleDropdown(menuType);
 };
 </script>
-
-<style></style>

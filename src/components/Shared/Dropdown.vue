@@ -1,45 +1,54 @@
 <template>
-  <transition name="fade">
-    <div class="z-[-10] text-kamil-blue-dark">
-      <ul
-        class="absolute right-0 top-0 h-max w-full origin-top-right flex-col rounded-md bg-white p-3 py-2 pt-16 shadow-lg md:top-16 md:w-auto md:pt-0"
-      >
-        <li
-          class="select-effect flex justify-center py-1"
-          v-for="item in props.menuItems"
-          :key="item.text"
-        >
-          <a href="#" class="">{{ item.text }}</a>
-        </li>
-        <div class="mx-auto mt-2 flex w-2/3">
-          <slot name="extra-button"></slot>
-        </div>
-      </ul>
-    </div>
+  <transition
+    name="fade"
+    v-show="dropdownStore.isOpen[menuType]"
+    class="text-kamil-blue-dark"
+    ref="dropdownRef"
+  >
+    <ul
+      class="absolute right-0 top-0 z-[-10] h-max w-full origin-top-right flex-col rounded-md bg-white p-3 py-2 pt-16 shadow-lg md:top-16 md:w-auto md:pt-0"
+    >
+      <li class="select-effect flex justify-center py-1" v-for="item in menuItems" :key="item.text">
+        <router-link :to="item.url">{{ item.text }}</router-link>
+      </li>
+      <div class="mx-auto mt-2 flex w-2/3">
+        <slot name="extra-button"></slot>
+      </div>
+    </ul>
   </transition>
 </template>
 
 <script setup lang="ts">
-import { defineProps, withDefaults, ref } from "vue";
-const dropdownRef = ref(null);
+import { ref, onMounted, onUnmounted, defineEmits, watch, PropType } from "vue";
+import { useDropdownStore } from "@/stores/dropdown";
 
-// Definicja interfejsu dla elementów menu
 interface MenuItem {
   text: string;
   url: string;
 }
 
-// Definicja interfejsu dla props
-interface Props {
+interface DropdownProps {
   menuItems: MenuItem[];
+  menuType: "hamburger" | "profile";
 }
 
-// Definiowanie props z domyślną wartością jako funkcja zwracająca tablicę
-const props = withDefaults(defineProps<Props>(), {
-  menuItems: () =>
-    [
-      { text: "blablaba", url: "/dashboard" },
-      { text: "adnaiwdni", url: "/settings" },
-    ] as MenuItem[], // Określ typ domyślnej wartości
+const props = defineProps<DropdownProps>();
+const dropdownStore = useDropdownStore();
+
+const dropdownRef = ref(null);
+
+// Zamknij dropdown przy kliknięciu poza nim
+const handleClickOutside = (event: MouseEvent) => {
+  if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
+    dropdownStore.closeAllDropdowns();
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("click", handleClickOutside);
 });
 </script>
