@@ -8,10 +8,14 @@
     <ul
       class="absolute right-0 top-0 z-[-10] h-max w-full origin-top-right flex-col rounded-md bg-white p-3 py-2 pt-16 shadow-lg md:top-16 md:w-auto md:pt-0"
     >
-      <li class="select-effect flex justify-center py-1" v-for="item in menuItems" :key="item.text">
-        <router-link :to="item.url">{{ item.text }}</router-link>
+      <li
+        class="select-effect flex justify-center bg-slate-600 py-1"
+        v-for="item in menuItems"
+        :key="item.text"
+      >
+        <router-link class="flex w-full justify-center" :to="item.url">{{ item.text }}</router-link>
       </li>
-      <div class="mx-auto mt-2 flex w-2/3">
+      <div class="mx-auto mt-2 flex w-1/5 md:w-auto">
         <slot name="extra-button"></slot>
       </div>
     </ul>

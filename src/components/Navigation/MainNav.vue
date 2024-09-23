@@ -24,7 +24,7 @@
         </nav>
 
         <!-- Hamburger menu, widoczne na małych ekranach -->
-        <div class="ml-5 flex h-full items-center md:hidden">
+        <div class="ml-5 mr-auto flex h-full items-center md:hidden">
           <HamburgerMenu />
         </div>
 

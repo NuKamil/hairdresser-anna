@@ -25,21 +25,19 @@
     </div>
 
     <!-- Profile Image -->
-    <div class="flex flex-col">
-      <button
-        @click.stop="toggleDropdown('profile')"
-        class="border-1 relative h-10 w-10 rounded-full border-solid border-kamil-orange-dark bg-kamil-orange-dark p-1 transition-shadow duration-300 hover:shadow-blue"
-      >
-        <img :src="image" alt="" class="h-full w-full overflow-hidden rounded-full object-cover" />
-      </button>
+    <button
+      @click.stop="dropdownStore.toggleDropdown('profile')"
+      class="border-1 relative h-10 w-10 rounded-full border-solid border-kamil-orange-dark bg-kamil-orange-dark p-1 transition-shadow duration-300 hover:shadow-blue"
+    >
+      <img :src="image" alt="" class="h-full w-full overflow-hidden rounded-full object-cover" />
+    </button>
 
-      <!-- Dropdown -->
-      <dropdown v-model:is-open="isOpen.profile" :menu-items="menuItems" menu-type="profile">
-        <template #extra-button>
-          <action-button @click="handleClick" />
-        </template>
-      </dropdown>
-    </div>
+    <!-- Dropdown -->
+    <dropdown v-model="isOpen.profile" :menu-items="menuItems" menu-type="profile" ref="dropdown">
+      <template #extra-button>
+        <action-button @click="handleClick" />
+      </template>
+    </dropdown>
   </div>
 </template>
 
@@ -56,8 +54,7 @@ const dropdownStore = useDropdownStore();
 const userStore = useUserStore();
 const isOpen = dropdownStore.isOpen;
 
-const emit = defineEmits(["login"]);
-
+const dropdown = ref(null);
 const menuItems = ref([
   { text: "Dashboard", url: "/dashboard" },
   { text: "Settings", url: "/settings" },
@@ -66,9 +63,5 @@ const menuItems = ref([
 
 const handleClick = () => {
   userStore.toggleLoggin();
-};
-
-const toggleDropdown = (menuType: "profile" | "hamburger") => {
-  dropdownStore.toggleDropdown(menuType);
 };
 </script>

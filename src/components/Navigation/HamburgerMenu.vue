@@ -1,7 +1,7 @@
 <template>
   <!-- Ikona hamburgera widoczna na małych ekranach -->
   <button
-    @click.stop="toggleDropdown('hamburger')"
+    @click.stop="dropdownStore.toggleDropdown('hamburger')"
     class="relative flex items-center text-kamil-orange-dark md:hidden"
   >
     <svg
@@ -21,7 +21,12 @@
   </button>
   <div>
     <!-- Menu mobilne - pojawia się po kliknięciu ikony hamburgera -->
-    <dropdown v-model:is-open="isOpen.hamburger" :menu-items="menuItems" menu-type="hamburger" />
+    <dropdown
+      v-model="isOpen.hamburger"
+      :menu-items="menuItems"
+      menu-type="hamburger"
+      ref="dropdown"
+    />
   </div>
 </template>
 
@@ -32,15 +37,11 @@ import Dropdown from "@/components/Shared/Dropdown.vue";
 
 const dropdownStore = useDropdownStore();
 const isOpen = dropdownStore.isOpen;
-
+const dropdown = ref(null);
 const menuItems = ref([
   { text: "Home", url: "/" },
   { text: "Shop", url: "/shop" },
   { text: "News", url: "/news" },
   { text: "Book Now", url: "/book" },
 ]);
-
-const toggleDropdown = (menuType: "profile" | "hamburger") => {
-  dropdownStore.toggleDropdown(menuType);
-};
 </script>

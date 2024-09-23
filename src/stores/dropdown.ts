@@ -17,20 +17,23 @@ export const useDropdownStore = defineStore("dropdown", {
     },
   }),
   actions: {
-    // Otwórz konkretny dropdown, zamykając wszystkie inne
     toggleDropdown(menuType) {
-      // Resetujemy wszystkie dropdowny
+      // Zapamiętaj aktualny stan menuType
+      const currentState = this.isOpen[menuType];
+
+      // Zamknij wszystkie dropdowny
       for (const key in this.isOpen) {
         this.isOpen[key] = false;
       }
-      // Otwieramy wskazany dropdown
-      this.isOpen[menuType] = !this.isOpen[menuType];
+      this.isOpen[menuType] = !currentState;
+      console.log("Updated isOpen state:", this.isOpen);
     },
     // Zamknij wszystkie dropdowny
     closeAllDropdowns() {
       for (const key in this.isOpen) {
         this.isOpen[key] = false;
       }
+      console.trace("Updated isOpen state:", this.isOpen);
     },
   },
 });
