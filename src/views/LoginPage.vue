@@ -60,10 +60,9 @@ const url = "Pictures/beauty-salon-4043096_1920.jpg";
 const router = useRouter();
 
 const userStore = useUserStore();
-const isLoggeIn = computed(() => userStore.isLoggeIn);
 
 const login = (): void => {
-  if (!isLoggeIn.value) {
+  if (!userStore.isLoggeIn) {
     userStore.logInUser();
     router.push({
       name: "Home",

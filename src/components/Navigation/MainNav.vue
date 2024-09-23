@@ -30,7 +30,7 @@
 
         <!-- Przyciski widoczne na większych ekranach -->
         <div class="ml-auto mr-5 flex h-full items-center">
-          <profile-controls v-if="isLoggeIn" />
+          <profile-controls v-if="userStore.isUserLogged" />
           <action-button @click="login" v-else />
         </div>
       </div>
@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { useUserStore } from "@/stores/user";
 
@@ -52,7 +52,6 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const userStore = useUserStore();
-const isLoggeIn = computed(() => userStore.isLoggeIn);
 
 const menuItems = ref([
   { text: "HOME", url: "/" },
