@@ -1,7 +1,16 @@
 import { defineStore } from "pinia";
 
+export interface DropdownIsOpen {
+  hamburger: boolean;
+  profile: boolean;
+}
+
+export interface DropdownState {
+  isOpen: DropdownIsOpen;
+}
+
 export const useDropdownStore = defineStore("dropdown", {
-  state: () => ({
+  state: (): DropdownState => ({
     isOpen: {
       hamburger: false,
       profile: false,
@@ -14,9 +23,8 @@ export const useDropdownStore = defineStore("dropdown", {
       for (const key in this.isOpen) {
         this.isOpen[key] = false;
       }
-
       // Otwieramy wskazany dropdown
-      this.isOpen[menuType] = true;
+      this.isOpen[menuType] = !this.isOpen[menuType];
     },
     // Zamknij wszystkie dropdowny
     closeAllDropdowns() {

@@ -30,8 +30,8 @@
 
         <!-- Przyciski widoczne na większych ekranach -->
         <div class="ml-auto mr-5 flex h-full items-center">
-          <profile-controls v-if="isLoggeIn" :is-logged="isLoggeIn" @login="login" />
-          <action-button @click="login" :is-logged="isLoggeIn" v-else />
+          <profile-controls v-if="isLoggeIn" />
+          <action-button @click="login" v-else />
         </div>
       </div>
     </div>
@@ -54,9 +54,6 @@ const router = useRouter();
 const userStore = useUserStore();
 const isLoggeIn = computed(() => userStore.isLoggeIn);
 
-const logInUser = userStore.logInUser;
-const logOutUser = userStore.logOutUser;
-
 const menuItems = ref([
   { text: "HOME", url: "/" },
   { text: "SHOP", url: "/shop" },
@@ -70,19 +67,9 @@ const isActiveLink = (routePath: string): boolean => {
 };
 
 const login = (): void => {
-  if (!isLoggeIn.value) {
-    router.push({
-      name: "Login",
-    });
-    setTimeout(() => {
-      router.push({
-        name: "Home",
-      });
-      logInUser();
-    }, 1000);
-  } else {
-    logOutUser();
-  }
+  router.push({
+    name: "Login",
+  });
 };
 </script>
 

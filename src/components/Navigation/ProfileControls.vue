@@ -36,7 +36,7 @@
       <!-- Dropdown -->
       <dropdown v-model:is-open="isOpen.profile" :menu-items="menuItems" menu-type="profile">
         <template #extra-button>
-          <action-button :is-logged="props.isLogged" @click="handleClick" />
+          <action-button @click="handleClick" />
         </template>
       </dropdown>
     </div>
@@ -46,12 +46,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useDropdownStore } from "@/stores/dropdown";
+import { useUserStore } from "@/stores/user";
 import Dropdown from "@/components/Shared/Dropdown.vue";
 import ActionButton from "@/components/Shared/ActionButton.vue";
 
 const image = ref("Pictures/20240907_102924.jpg");
 
 const dropdownStore = useDropdownStore();
+const userStore = useUserStore();
 const isOpen = dropdownStore.isOpen;
 
 const emit = defineEmits(["login"]);
@@ -62,15 +64,8 @@ const menuItems = ref([
   { text: "Purchase History", url: "/purchase" },
 ]);
 
-const props = defineProps({
-  isLogged: {
-    type: Boolean,
-    default: false,
-  },
-});
-
 const handleClick = () => {
-  emit("login");
+  userStore.toggleLoggin();
 };
 
 const toggleDropdown = (menuType: "profile" | "hamburger") => {

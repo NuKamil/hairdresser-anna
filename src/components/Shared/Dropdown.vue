@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, defineEmits, watch, PropType } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { useDropdownStore } from "@/stores/dropdown";
 
 interface MenuItem {

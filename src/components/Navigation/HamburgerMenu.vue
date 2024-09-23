@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineEmits } from "vue";
+import { ref } from "vue";
 import { useDropdownStore } from "@/stores/dropdown";
 import Dropdown from "@/components/Shared/Dropdown.vue";
 
