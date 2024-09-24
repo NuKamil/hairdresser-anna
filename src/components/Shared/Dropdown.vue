@@ -1,7 +1,7 @@
 <template>
   <transition
     name="fade"
-    v-show="dropdownStore.isOpen[menuType]"
+    v-if="dropdownStore.isOpen[menuType]"
     class="text-kamil-blue-dark"
     ref="dropdownRef"
   >
@@ -15,7 +15,7 @@
       >
         <router-link class="flex w-full justify-center" :to="item.url">{{ item.text }}</router-link>
       </li>
-      <div class="mx-auto mt-2 flex w-1/5 md:w-auto">
+      <div class="mx-auto mt-2 flex w-1/4 md:w-auto">
         <slot name="extra-button"></slot>
       </div>
     </ul>

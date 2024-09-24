@@ -26,14 +26,12 @@ export const useDropdownStore = defineStore("dropdown", {
         this.isOpen[key] = false;
       }
       this.isOpen[menuType] = !currentState;
-      console.log("Updated isOpen state:", this.isOpen);
     },
     // Zamknij wszystkie dropdowny
     closeAllDropdowns() {
       for (const key in this.isOpen) {
         this.isOpen[key] = false;
       }
-      console.trace("Updated isOpen state:", this.isOpen);
     },
   },
 });
