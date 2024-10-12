@@ -1,6 +1,5 @@
 <template>
   <section
-    id="section_02"
     class="font-bolt flex max-w-screen-sm flex-col items-center justify-center space-y-4 rounded-md p-5 font-sans text-lg text-kamil-blue-dark md:text-xl"
   >
     <div class="flex w-fit items-center justify-between text-center">
@@ -10,7 +9,7 @@
     </div>
     <div class="flex items-center space-x-4">
       <span>FRISØR</span>
-      <span class="text-4xl text-kamil-orange-dark md:text-6xl">
+      <span id="myUl" class="text-4xl text-kamil-orange-dark md:text-6xl">
         AN<span class="inline-block scale-x-[-1] transform">N</span>A
       </span>
       <span>SALONG</span>

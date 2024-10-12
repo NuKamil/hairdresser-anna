@@ -23,7 +23,7 @@ import { onMounted, onUnmounted } from "vue";
 const menuItems = ref([
   { text: "Main", hash: "main" },
   { text: "About Me", hash: "about_me" },
-  { text: "Gallery", hash: "gallery" },
+  { text: "Services", hash: "services" },
   { text: "Contact", hash: "contact" },
   // itd.
 ]);

@@ -32,7 +32,7 @@
                 >Lost Password?</a
               >
             </div>
-            <action-button />
+            <action-button @click="login" />
             <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
               Not registered?
               <a href="#" class="text-blue-700 hover:underline dark:text-blue-500"
@@ -49,7 +49,29 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import ActionButton from "@/components/Shared/ActionButton.vue";
+import { useUserStore } from "@/stores/user";
+import { useRouter } from "vue-router";
+import { computed } from "vue";
+
 const url = "Pictures/beauty-salon-4043096_1920.jpg";
+
+const router = useRouter();
+
+const userStore = useUserStore();
+
+const login = (): void => {
+  if (!userStore.isLoggeIn) {
+    userStore.logInUser();
+    router.push({
+      name: "Home",
+    });
+  } else {
+    userStore.logOutUser;
+    router.push({
+      name: "Login",
+    });
+  }
+};
 </script>
