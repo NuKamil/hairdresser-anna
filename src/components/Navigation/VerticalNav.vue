@@ -1,29 +1,29 @@
 <template>
-  <div class="fixed left-5 top-1/2 z-10 flex">
-    <!-- <img class="relative top-0 h-7" :src="scissorsUrl" alt="" /> -->
-    <ul class="ml-2 w-max font-serif text-lg font-bold text-white">
-      <li class="button-effect cursor-pointer" v-for="item in menuItems" :key="item.hash">
-        <a
-          :href="item.hash"
-          @click.prevent="scrollToSection(item)"
-          :class="{ 'kamil-orange-1': activeSection === item.hash }"
-          >{{ item.text }}
-        </a>
-      </li>
-    </ul>
-  </div>
+  <ul class="hidden w-max flex-col font-sans text-lg md:flex">
+    <li class="mb-5 rotate-45 cursor-pointer" v-for="item in menuItems" :key="item.hash">
+      <a :href="item.hash" @click.prevent="scrollToSection(item)"
+        ><div
+          :class="[
+            'h-3',
+            'w-3',
+            activeSection === item.hash ? 'bg-kamil-orange-dark' : 'bg-kamil-blue-dark',
+            'transition-colors duration-300 hover:bg-kamil-orange-dark',
+            'transition-transform duration-300 hover:rounded-full',
+          ]"
+        ></div
+      ></a>
+    </li>
+  </ul>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import { onMounted, onUnmounted } from "vue";
 
-const scissorsUrl = "./Svg/scissors.svg";
-
 const menuItems = ref([
   { text: "Main", hash: "main" },
   { text: "About Me", hash: "about_me" },
-  { text: "Gallery", hash: "gallery" },
+  { text: "Services", hash: "services" },
   { text: "Contact", hash: "contact" },
   // itd.
 ]);
@@ -37,22 +37,32 @@ const scrollToSection = (item) => {
     activeSection.value = item.hash;
   }
 };
+let observer;
 
-const handleScroll = () => {
-  for (const item of menuItems.value) {
-    const section = document.getElementById(item.hash);
-    if (section && section.getBoundingClientRect().top < window.innerHeight / 2) {
-      activeSection.value = item.hash;
-      break;
+const onIntersect = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      activeSection.value = entry.target.id;
     }
-  }
+  });
 };
 
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
+  observer = new IntersectionObserver(onIntersect, {
+    threshold: 0.6, // 60% elementu musi być widoczne, aby uznać go za "intersecting"
+  });
+
+  menuItems.value.forEach((item) => {
+    const section = document.getElementById(item.hash);
+    if (section) {
+      observer.observe(section);
+    }
+  });
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
+  if (observer) {
+    observer.disconnect();
+  }
 });
 </script>

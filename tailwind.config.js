@@ -6,21 +6,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
-        mono: ["Edu SA Beginner", ...defaultTheme.fontFamily.sans],
-        serif: ["Cinzel Decorative", defaultTheme.fontFamily.serif],
+        sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        "brand-gray-1": "#dadce0",
-        "brand-gray-2": "#f8f9fa",
-        "brand-gray-3": "#80868b",
-        "brand-blue-1": "#1967d2",
-        "brand-blue-2": "#4285f4",
-        "brand-green-1": "#137333",
-        "kamil-orange-1": "rgb(251 146 60)",
+        "kamil-blue-light": "#C9DABF", //rgb(201, 218, 191)
+        "kamil-green-light": "#9CA986", //rgb(156, 169, 134)
+        "kamil-blue-medium": "#808D7C", //rgb(128, 141, 124)
+        "kamil-blue-dark": "#5F6F65", //rgb(95, 111, 101)
+        "kamil-orange-dark": "#E8B86D", //rgb(232, 184, 109)
       },
       boxShadow: {
-        blue: "0 0 3px 3px #4285f4",
+        blue: "0 0 3px 3px #5F6F65",
         gray: "0 1px 3px 0 rgba(60, 64, 67, .3)",
       },
     },
