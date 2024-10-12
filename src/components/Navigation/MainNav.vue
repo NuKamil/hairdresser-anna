@@ -1,9 +1,11 @@
 <template>
-  <header class="w-full text-lg font-semibold">
+  <header class="w-full font-semibold">
     <div class="fixed left-0 top-0 h-16 w-full">
-      <div class="mx-auto flex h-full w-full">
+      <div class="flex h-full w-full">
         <!-- Navbar widoczny tylko na większych ekranach -->
-        <nav class="absolute left-1/2 top-0 hidden h-full -translate-x-1/2 transform md:flex">
+        <nav
+          class="absolute left-1/2 top-0 hidden h-full -translate-x-1/2 transform text-lg md:flex"
+        >
           <ul class="flex h-full list-none justify-center font-sans text-kamil-orange-dark">
             <li class="ml-9 h-full first:ml-0" v-for="menuItem in menuItems" :key="menuItem.text">
               <router-link
@@ -21,31 +23,15 @@
           </ul>
         </nav>
 
-        <!-- Przyciski widoczne na większych ekranach -->
-        <div class="ml-auto mr-10 hidden h-full items-center md:flex">
-          <profile-image v-if="isLoggeIn" :is-logged="isLoggeIn" @login="login" />
-          <action-button @click="login" :is-logged="isLoggeIn" v-else />
+        <!-- Hamburger menu, widoczne na małych ekranach -->
+        <div class="ml-5 mr-auto flex h-full items-center md:hidden">
+          <HamburgerMenu />
         </div>
 
-        <!-- Hamburger menu, widoczne na małych ekranach -->
-        <div class="mx-auto mt-5 md:hidden">
-          <HamburgerMenu>
-            <!-- Przekazanie slotów do HamburgerMenu -->
-            <template #menu-items>
-              <li v-for="menuItem in menuItems" :key="menuItem.url">
-                <router-link
-                  :class="[isActiveLink(menuItem.url) ? 'text-kamil-orange-dark' : 'text-black']"
-                  :to="menuItem.url"
-                >
-                  {{ menuItem.text }}
-                </router-link>
-              </li>
-            </template>
-
-            <template #extra-button>
-              <action-button @click="login" :is-logged="isLoggeIn" />
-            </template>
-          </HamburgerMenu>
+        <!-- Przyciski widoczne na większych ekranach -->
+        <div class="ml-auto mr-5 flex h-full items-center">
+          <profile-controls v-if="userStore.isUserLogged" />
+          <action-button @click="login" v-else />
         </div>
       </div>
     </div>
@@ -53,23 +39,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { useUserStore } from "@/stores/user";
 
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import HamburgerMenu from "@/components/Navigation/HamburgerMenu.vue";
-import ProfileImage from "@/components/Navigation/ProfileImage.vue";
+import ProfileControls from "@/components/Navigation/ProfileControls.vue";
 
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 
 const userStore = useUserStore();
-const isLoggeIn = computed(() => userStore.isLoggeIn);
-
-const logInUser = userStore.logInUser;
-const logOutUser = userStore.logOutUser;
 
 const menuItems = ref([
   { text: "HOME", url: "/" },
@@ -84,19 +66,9 @@ const isActiveLink = (routePath: string): boolean => {
 };
 
 const login = (): void => {
-  if (!isLoggeIn.value) {
-    router.push({
-      name: "Login",
-    });
-    setTimeout(() => {
-      router.push({
-        name: "Home",
-      });
-      logInUser();
-    }, 1000);
-  } else {
-    logOutUser();
-  }
+  router.push({
+    name: "Login",
+  });
 };
 </script>
 

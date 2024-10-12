@@ -32,6 +32,21 @@ const routes = [
     name: "Login",
     component: LoginPage,
   },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    // component: Dashboard
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    // component: Settings
+  },
+  {
+    path: "/purchase",
+    name: "Purchase",
+    // component: Purchase
+  },
 ];
 
 const router = createRouter({

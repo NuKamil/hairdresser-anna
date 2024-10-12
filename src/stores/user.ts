@@ -14,11 +14,17 @@ export const useUserStore = defineStore("user", {
     logInUser(): void {
       this.isLoggeIn = true;
     },
+    toggleLoggin(): void {
+      this.isLoggeIn = !this.isLoggeIn;
+    },
     logOutUser(): void {
       this.isLoggeIn = false;
     },
     signUser(): void {
       this.isSignIn = true;
     },
+  },
+  getters: {
+    isUserLogged: (state) => state.isLoggeIn,
   },
 });

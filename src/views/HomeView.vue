@@ -5,6 +5,7 @@
     </div>
     <the-hero />
     <the-about-me />
+    <the-services />
   </div>
 </template>
 
@@ -12,4 +13,5 @@
 import TheHero from "@/components/Presentation/TheHero.vue";
 import VerticalNav from "@/components/Navigation/VerticalNav.vue";
 import TheAboutMe from "@/components/Presentation/TheAboutMe.vue";
+import TheServices from "@/components/Presentation/TheServices.vue";
 </script>
