@@ -1,7 +1,7 @@
 <template>
   <div
     id="about_me"
-    class="flex h-screen shrink-0 snap-start items-center bg-gradient-to-t from-white via-kamil-blue-light via-40% to-white to-70%"
+    class="flex h-screen shrink-0 snap-start items-center bg-gradient-to-t from-white from-20% via-orange-100 via-40% to-white to-60%"
   >
     <div id="myUl" class="mx-6 items-center gap-16 md:mx-28 md:flex">
       <div class="mb-6 md:mb-0">

@@ -1,7 +1,7 @@
 <template>
   <div
     id="services"
-    class="flex h-screen shrink-0 snap-start items-center bg-gradient-to-t from-white from-20% via-kamil-green-light via-40% to-white to-60%"
+    class="flex h-screen shrink-0 snap-start items-center bg-gradient-to-t from-white from-20% via-orange-100 via-40% to-white to-60%"
   >
     <div class="mx-6 my-auto w-full items-center justify-center gap-10 md:mx-28 md:flex">
       <div class="mx-auto h-auto md:max-w-sm">
