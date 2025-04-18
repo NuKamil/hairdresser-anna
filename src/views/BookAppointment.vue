@@ -1,7 +1,12 @@
+<script setup lang="ts">
+import TestList from "@/components/Shared/TestList.vue";
+
+</script>
+
 <template>
   <header class="mt-16">
-    <h1>book</h1>
+    <div>
+        <test-list/>
+    </div>
   </header>
 </template>
-
-<script setup></script>

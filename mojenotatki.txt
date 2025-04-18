@@ -14,3 +14,5 @@ npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg
 npm install --save vue-router@4
 
 npm install --save pinia
+
+npm install --save axios
