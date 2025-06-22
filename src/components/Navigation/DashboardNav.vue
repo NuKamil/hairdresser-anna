@@ -49,11 +49,8 @@ import { useRouter } from "vue-router";
 
 defineProps<{ items: { text: string; url: string }[] }>()
 
-
 const router = useRouter();
-
 const userStore = useUserStore();
-
 
 const isActiveLink = (routePath: string): boolean => {
   const route = useRoute();

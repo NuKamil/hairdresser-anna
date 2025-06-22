@@ -3,8 +3,9 @@
 </script>
 
 <template>
-  <header class="mt-16">
-    <div>
-    </div>
-  </header>
+
 </template>
+
+<style scoped>
+
+</style>

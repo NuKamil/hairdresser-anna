@@ -5,6 +5,14 @@ import BookAppointment from "@/views/BookAppointment.vue";
 import TheShop from "@/views/TheShop.vue";
 import TheNews from "@/views/News.vue";
 import LoginPage from "@/views/LoginPage.vue";
+import Dashboard from '@/views/dashboard/DashboardLayout.vue';
+import DashboardHome from '@/views/dashboard/Overview.vue';
+import DashboardPurchase from '@/views/dashboard/Purchase.vue';
+import DashboardSettings from '@/views/dashboard/Settings.vue';
+import DashboardHairServicesLayout from '@/views/dashboard/hairServices/DashboardHairServicesLayout.vue'
+import TestList                     from '@/views/dashboard/hairServices/TestList.vue'
+import NewHairServiceForm           from '@/views/dashboard/hairServices/NewHairServiceForm.vue'
+
 
 const routes = [
   {
@@ -33,20 +41,52 @@ const routes = [
     component: LoginPage,
   },
   {
-    path: "/dashboard",
+    path: '/dashboard',
     name: "Dashboard",
-    // component: Dashboard
+    component: Dashboard,
+    children: [
+      {
+        path: '',               // przy /dashboard
+        name: 'DashboardHome',
+        component: DashboardHome,
+      },
+      {
+        path: 'settings',       // przy /dashboard/settings
+        name: 'DashboardSettings',
+        component: DashboardSettings,
+      },
+      {
+        path: 'purchase',       // przy /dashboard/purchase
+        name: 'DashboardPurchase',
+        component: DashboardPurchase,
+      },
+{
+        path: 'hair-services',
+        component: DashboardHairServicesLayout,
+        children: [
+          {
+            path: '',              // /dashboard/hair-services
+            name: 'HairServiceList',
+            component: TestList,
+          },
+          {
+            path: 'new',           // /dashboard/hair-services/new
+            name: 'NewHairService',
+            component: NewHairServiceForm,
+          },
+          // {
+          //   path: ':id/edit',      // np. edycja
+          //   name: 'EditHairService',
+          //   component: () => import('@/views/hairServices/EditHairServiceForm.vue'),
+          // },
+        ]
+      },
+
+    ]
   },
-  {
-    path: "/settings",
-    name: "Settings",
-    // component: Settings
-  },
-  {
-    path: "/purchase",
-    name: "Purchase",
-    // component: Purchase
-  },
+
+  // fallback 404
+  { path: '/:catchAll(.*)', redirect: '/' },
 ];
 
 const router = createRouter({
