@@ -1,18 +1,20 @@
 <template>
-  <router-view />
-  <div :class="[isActiveLink(login) ? 'hidden' : 'flex']">
-    <main-nav />
-  </div>
+  <component :is="layout">
+    <router-view />
+  </component>
 </template>
 
 <script setup>
-import MainNav from "@/components/Navigation/MainNav.vue";
-import { useRoute } from "vue-router";
-import { ref } from "vue";
-const login = ref("/login");
+import { computed } from "vue";
+import { useRoute }   from "vue-router";
 
-const isActiveLink = (routePath) => {
-  const route = useRoute();
-  return route.path === routePath;
-};
+import DefaultLayout  from "@/layouts/DefaultLayout.vue";
+import DashboardLayout from "@/layouts/DashboardLayout.vue";
+
+const route = useRoute();
+const layout = computed(() =>
+  route.path.startsWith("/dashboard")
+    ? DashboardLayout
+    : DefaultLayout
+);
 </script>
