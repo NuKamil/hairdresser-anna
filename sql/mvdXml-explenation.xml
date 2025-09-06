@@ -1,0 +1,130 @@
+<mvdXML xmlns="http://buildingsmart-tech.org/mvd/XML/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  uuid="12345678-1234-1234-1234-123456789012"
+  name="Sample MVD"
+  xsi:schemaLocation="http://buildingsmart-tech.org/mvd/XML/1.1 http://buildingsmart-tech.org/mvd/XML/1.1/mvdXML_V1.1.xsd">
+
+  <!-- Root element for MVD XML -->
+  <!-- uuid: unique identifier for the MVD definition -->
+  <!-- name: name of the MVD definition -->
+  <!-- schemaLocation: specifies the location of the XML schema used to validate this document -->
+
+  <!-- Template definitions -->
+  <Templates>
+    <ConceptTemplate uuid="11111111-1111-1111-1111-111111111111" name="Wall Composition"
+      applicableSchema="IFC4" applicableEntity="IfcWall">
+      <!-- ConceptTemplate defines reusable concepts -->
+      <!-- uuid: unique identifier for the concept template -->
+      <!-- name: name of the template (e.g., Wall Composition) -->
+      <!-- applicableSchema: defines the IFC schema (e.g., IFC4) -->
+      <!-- applicableEntity: the IFC entity this template applies to (e.g., IfcWall) -->
+
+      <Definitions>
+        <Definition>
+          <Body><![CDATA[<p>This template describes how walls are composed of individual parts.</p>]]></Body>
+          <!-- Definitions provide textual explanations for the concept template -->
+          <!-- Body: contains the detailed description in HTML format -->
+        </Definition>
+      </Definitions>
+
+      <Rules>
+        <!-- AttributeRule specifies a rule for an attribute of the applicable entity (e.g.,
+        IfcWall) -->
+        <AttributeRule AttributeName="HasMaterial">
+          <EntityRules>
+            <EntityRule EntityName="IfcRelAssociatesMaterial" />
+          </EntityRules>
+        </AttributeRule>
+
+        <!-- AttributeRule checks whether the attribute "HasPredefinedType" has a specific type -->
+        <AttributeRule AttributeName="PredefinedType">
+          <EntityRules>
+            <EntityRule EntityName="IfcWallTypeEnum">
+              <AttributeRules>
+                <AttributeRule AttributeName="UserDefinedType" />
+              </AttributeRules>
+            </EntityRule>
+          </EntityRules>
+        </AttributeRule>
+      </Rules>
+
+      <SubTemplates>
+        <ConceptTemplate uuid="22222222-2222-2222-2222-222222222222"
+          name="Material Layer Composition"
+          applicableSchema="IFC4" applicableEntity="IfcMaterialLayerSet">
+          <Definitions>
+            <Definition>
+              <Body><![CDATA[<p>This template defines the layering of materials in walls.</p>]]></Body>
+            </Definition>
+          </Definitions>
+
+          <!-- This SubTemplate further defines the layers for a wall material set -->
+          <Rules>
+            <AttributeRule AttributeName="MaterialLayers">
+              <EntityRules>
+                <EntityRule EntityName="IfcMaterialLayer" />
+              </EntityRules>
+            </AttributeRule>
+          </Rules>
+        </ConceptTemplate>
+      </SubTemplates>
+    </ConceptTemplate>
+  </Templates>
+
+  <!-- Views define how a subset of the IFC schema is handled for a specific exchange scenario -->
+  <Views>
+    <ModelView uuid="33333333-3333-3333-3333-333333333333" name="Wall Construction View"
+      applicableSchema="IFC4">
+      <!-- ModelView defines a specific view of the IFC schema for a particular domain -->
+      <!-- uuid: unique identifier for the view -->
+      <!-- name: name of the view (e.g., Wall Construction View) -->
+      <!-- applicableSchema: defines the IFC schema (e.g., IFC4) -->
+
+      <ExchangeRequirements>
+        <ExchangeRequirement uuid="44444444-4444-4444-4444-444444444444"
+          name="Construction Data Export" applicability="export" />
+        <!-- ExchangeRequirement defines a scenario for exchanging data (e.g., export) -->
+        <!-- uuid: unique identifier for the exchange requirement -->
+        <!-- name: name of the exchange requirement (e.g., Construction Data Export) -->
+        <!-- applicability: defines whether the requirement applies to import, export, or both -->
+      </ExchangeRequirements>
+
+      <Roots>
+        <ConceptRoot uuid="55555555-5555-5555-5555-555555555555" applicableRootEntity="IfcWall">
+          <!-- ConceptRoot defines the root element (IFC entity) for a concept within this view -->
+          <!-- uuid: unique identifier for the concept root -->
+          <!-- applicableRootEntity: the IFC entity to which this concept applies (e.g., IfcWall) -->
+
+          <Concepts>
+            <Concept uuid="66666666-6666-6666-6666-666666666666" name="Wall Composition Concept">
+              <!-- Concept is a specific application of a concept template -->
+              <!-- uuid: unique identifier for the concept -->
+              <!-- name: name of the concept (e.g., Wall Composition Concept) -->
+
+              <Template ref="11111111-1111-1111-1111-111111111111" />
+              <!-- Template reference links the concept to a predefined ConceptTemplate using the
+              template's UUID -->
+
+              <Requirements>
+                <!-- Defines requirements for exchange scenarios (e.g., import/export) -->
+                <Requirement applicability="export" requirement="mandatory"
+                  exchangeRequirement="44444444-4444-4444-4444-444444444444" />
+                <Requirement applicability="import" requirement="mandatory"
+                  exchangeRequirement="44444444-4444-4444-4444-444444444444" />
+              </Requirements>
+
+              <!-- TemplateRules combine logical rules to further specify the template usage -->
+              <TemplateRules operator="and">
+                <TemplateRule Description="Wall must have predefined type 'Partitioning'."
+                  Parameters="PredefinedType[Value]='PARTITIONING'" />
+                <TemplateRule Description="Wall must be associated with material."
+                  Parameters="HasMaterial[Value] IS NOT NULL" />
+              </TemplateRules>
+            </Concept>
+          </Concepts>
+        </ConceptRoot>
+      </Roots>
+    </ModelView>
+  </Views>
+
+</mvdXML>
