@@ -1,7 +1,11 @@
+<script setup lang="ts">
+
+</script>
+
 <template>
   <header class="mt-16">
-    <h1>book</h1>
+    <div>
+      Book Appointment
+    </div>
   </header>
 </template>
-
-<script setup></script>
