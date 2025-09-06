@@ -5,6 +5,7 @@
 <template>
   <header class="mt-16">
     <div>
+      Book Appointment
     </div>
   </header>
 </template>

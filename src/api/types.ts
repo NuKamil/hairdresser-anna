@@ -1,10 +1,10 @@
-export type HairService = {
-  hairServiceId: string;
-  name:         string;
-  price:        number;
-  duration:     number;
-  description:  string;
-  isActive:     boolean;
-  entityTypeId: string;
-  serviceTypeId:string;
+export type Service = {
+	serviceId: string;
+	name: string;
+	price: number;
+	duration: number;
+	description: string;
+	isActive: boolean;
+	serviceCategoryId: string;
+	serviceTypeId: string;
 }

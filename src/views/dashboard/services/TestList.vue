@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { useHairServicesStore, FETCH_HAIR_SERVICES } from "@/stores/hairServices";
+import { useServicesStore, FETCH_SERVICES } from "@/stores/services";
 
-const store = useHairServicesStore();
+const store = useServicesStore();
 
 // Po zamontowaniu komponentu pobierz usługi
 onMounted(() => {
-  store[FETCH_HAIR_SERVICES]();
+  store[FETCH_SERVICES]();
 });
 </script>
 <template>
@@ -29,8 +29,8 @@ onMounted(() => {
         </thead>
         <tbody>
         <tr
-          v-for="service in store.hairServices"
-          :key="service.hairServiceId"
+          v-for="service in store.services"
+          :key="service.serviceCategoryId"
           class="even:bg-gray-50 hover:bg-gray-100"
         >
           <td class="border px-4 py-2">{{ service.name }}</td>
@@ -51,7 +51,7 @@ onMounted(() => {
               </span>
           </td>
         </tr>
-        <tr v-if="store.hairServices.length === 0">
+        <tr v-if="store.services.length === 0">
           <td colspan="5" class="px-4 py-2 text-center text-gray-500">
             Brak usług do wyświetlenia
           </td>
@@ -61,7 +61,7 @@ onMounted(() => {
     </div>
 
     <button
-      @click="store[FETCH_HAIR_SERVICES]()"
+      @click="store[FETCH_SERVICES]()"
       class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
     >
       Odśwież

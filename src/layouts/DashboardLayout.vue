@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-auto">
     <router-view/>
     <dashboard-nav :items="dashboardMenu" />
   </div>
@@ -10,7 +10,7 @@ import { ref } from "vue";
 import DashboardNav from "@/components/Navigation/DashboardNav.vue";
 
 const dashboardMenu = ref([
-  { text: "Hair Services", url: "/dashboard/hair-services" },
+  { text: "Services", url: "/dashboard/services" },
   { text: "Settings",     url: "/dashboard/settings"     },
 ]);
 </script>

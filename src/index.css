@@ -4,60 +4,67 @@
 
 html,
 body {
-  overflow: hidden;
-  scroll-behavior: smooth;
+	/* overflow: hidden; */
+	scroll-behavior: smooth;
 }
+
 .no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
+
 .no-scrollbar::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 .select-effect {
-  background-image: linear-gradient(to right, rgb(232, 184, 109) 50%, rgb(95, 111, 101) 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  color: rgb(95, 111, 101);
-  transition:
-    background-position 0.2s ease-out,
-    color 0.5s ease;
-  background-clip: border-box;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+	background-image: linear-gradient(to right, rgb(232, 184, 109) 50%, rgb(95, 111, 101) 50%);
+	background-size: 200% 100%;
+	background-position: right bottom;
+	color: rgb(95, 111, 101);
+	transition:
+		background-position 0.2s ease-out,
+		color 0.5s ease;
+	background-clip: border-box;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
+
 .select-effect:hover {
-  background-position: left bottom;
-  color: transparent;
+	background-position: left bottom;
+	color: transparent;
 }
 
 /* Definiujemy animacje fade */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease;
+	transition: opacity 0.3s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
-  opacity: 0;
+	opacity: 0;
 }
+
 .fade-enter-to,
 .fade-leave-from {
-  opacity: 1;
+	opacity: 1;
 }
 
 @keyframes appear {
-  from {
-    opacity: 0;
-    scale: 0.5;
-    clip-path: inset(100% 100% 0 0);
-  }
-  to {
-    opacity: 1;
-    scale: 1;
-    clip-path: inset(0 0 0 0);
-  }
+	from {
+		opacity: 0;
+		scale: 0.5;
+		clip-path: inset(100% 100% 0 0);
+	}
+
+	to {
+		opacity: 1;
+		scale: 1;
+		clip-path: inset(0 0 0 0);
+	}
 }
+
 /* 
 #myUl {
   animation: appear 5s ease-in;

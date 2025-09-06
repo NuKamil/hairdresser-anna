@@ -9,89 +9,89 @@ import Dashboard from '@/views/dashboard/DashboardLayout.vue';
 import DashboardHome from '@/views/dashboard/Overview.vue';
 import DashboardPurchase from '@/views/dashboard/Purchase.vue';
 import DashboardSettings from '@/views/dashboard/Settings.vue';
-import DashboardHairServicesLayout from '@/views/dashboard/hairServices/DashboardHairServicesLayout.vue'
-import TestList                     from '@/views/dashboard/hairServices/TestList.vue'
-import NewHairServiceForm           from '@/views/dashboard/hairServices/NewHairServiceForm.vue'
+import DashboardServicesLayout from '@/views/dashboard/services/DashboardServicesLayout.vue'
+import TestList from '@/views/dashboard/services/TestList.vue'
+import NewServiceForm from '@/views/dashboard/services/NewServiceForm.vue'
 
 
 const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: HomeView,
-  },
-  {
-    path: "/book",
-    name: "BookAppointment",
-    component: BookAppointment,
-  },
-  {
-    path: "/shop",
-    name: "Shop",
-    component: TheShop,
-  },
-  {
-    path: "/news",
-    name: "News",
-    component: TheNews,
-  },
-  {
-    path: "/login",
-    name: "Login",
-    component: LoginPage,
-  },
-  {
-    path: '/dashboard',
-    name: "Dashboard",
-    component: Dashboard,
-    children: [
-      {
-        path: '',               // przy /dashboard
-        name: 'DashboardHome',
-        component: DashboardHome,
-      },
-      {
-        path: 'settings',       // przy /dashboard/settings
-        name: 'DashboardSettings',
-        component: DashboardSettings,
-      },
-      {
-        path: 'purchase',       // przy /dashboard/purchase
-        name: 'DashboardPurchase',
-        component: DashboardPurchase,
-      },
-{
-        path: 'hair-services',
-        component: DashboardHairServicesLayout,
-        children: [
-          {
-            path: '',              // /dashboard/hair-services
-            name: 'HairServiceList',
-            component: TestList,
-          },
-          {
-            path: 'new',           // /dashboard/hair-services/new
-            name: 'NewHairService',
-            component: NewHairServiceForm,
-          },
-          // {
-          //   path: ':id/edit',      // np. edycja
-          //   name: 'EditHairService',
-          //   component: () => import('@/views/hairServices/EditHairServiceForm.vue'),
-          // },
-        ]
-      },
+	{
+		path: "/",
+		name: "Home",
+		component: HomeView,
+	},
+	{
+		path: "/book",
+		name: "BookAppointment",
+		component: BookAppointment,
+	},
+	{
+		path: "/shop",
+		name: "Shop",
+		component: TheShop,
+	},
+	{
+		path: "/news",
+		name: "News",
+		component: TheNews,
+	},
+	{
+		path: "/login",
+		name: "Login",
+		component: LoginPage,
+	},
+	{
+		path: '/dashboard',
+		name: "Dashboard",
+		component: Dashboard,
+		children: [
+			{
+				path: '',               // przy /dashboard
+				name: 'DashboardHome',
+				component: DashboardHome,
+			},
+			{
+				path: 'settings',       // przy /dashboard/settings
+				name: 'DashboardSettings',
+				component: DashboardSettings,
+			},
+			{
+				path: 'purchase',       // przy /dashboard/purchase
+				name: 'DashboardPurchase',
+				component: DashboardPurchase,
+			},
+			{
+				path: 'services',
+				component: DashboardServicesLayout,
+				children: [
+					{
+						path: '',              // /dashboard/services
+						name: 'ServiceList',
+						component: TestList,
+					},
+					{
+						path: 'new',           // /dashboard/services/new
+						name: 'NewService',
+						component: NewServiceForm,
+					},
+					// {
+					//   path: ':id/edit',      // np. edycja
+					//   name: 'EditService',
+					//   component: () => import('@/views/services/EditServiceForm.vue'),
+					// },
+				]
+			},
 
-    ]
-  },
+		]
+	},
 
-  // fallback 404
-  { path: '/:catchAll(.*)', redirect: '/' },
+	// fallback 404
+	{ path: '/:catchAll(.*)', redirect: '/' },
 ];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
+	history: createWebHistory(import.meta.env.BASE_URL),
+	routes,
 });
 
 export default router;
