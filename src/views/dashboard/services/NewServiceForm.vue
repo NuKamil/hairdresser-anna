@@ -48,11 +48,13 @@ const onSubmit = async () => {
 		<div class="grid grid-cols-3 gap-4">
 			<div>
 				<label class="block font-medium">Cena</label>
-				<input v-model.number="price" type="number" min="-1" required class="w-full border p-1" />
+				<input v-model.number="price" type="number" min="-1" required
+					class="w-full border p-1" />
 			</div>
 			<div>
 				<label class="block font-medium">Czas (min)</label>
-				<input v-model.number="duration" type="number" min="0" required class="w-full border p-1" />
+				<input v-model.number="duration" type="number" min="0" required
+					class="w-full border p-1" />
 			</div>
 		</div>
 		<div class="grid grid-cols-3 gap-4">
